@@ -12,6 +12,7 @@ export async function up(sql) {
 }
 
 export async function down(sql) {
+  // eslint-disable-next-line @typescript-eslint/no-shadow, @typescript-eslint/no-use-before-define
   for (const category of category) {
     await sql`
       DELETE FROM

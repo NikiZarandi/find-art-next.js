@@ -27,11 +27,16 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
+    "**/*.js",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/head.js",
-    "app/layout.js",
-    "app/head.js"
+    "app/layout.tsx",
+    "app/head.js",
+    "migrations/1677432150-createTableArts.mjs",
+    "migrations/1677432149-insertIntoTableCategory.mjs",
+    "migrations/1677430232-creatTableCategory.mjs",
+    "migrations/1677432151-createTableSessions.mjs"
   ],
   "exclude": ["node_modules"]
 }
