@@ -1,14 +1,19 @@
+import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { validateTokenWithSecret } from '../../../../util/csrf';
 import { createArt, getArtsWithLimitAndOffset } from '../../../database/arts';
+import { getUserBySessionToken } from '../../../database/users';
 
 const artType = z.object({
   firstName: z.string(),
   type: z.string(),
   accessory: z.string(),
+  csrfToken: z.string(),
 });
 
 export async function GET(request: NextRequest) {
+  // this should be a public api method (unprotected)
   const { searchParams } = new URL(request.url);
 
   const limit = Number(searchParams.get('limit'));
@@ -25,10 +30,23 @@ export async function GET(request: NextRequest) {
 
   const arts = await getArtsWithLimitAndOffset(limit, offset);
 
-  return NextResponse.json({ animals: arts });
+  return NextResponse.json({ arts: arts });
 }
 
 export async function POST(request: NextRequest) {
+  // this is a protected Route Handler
+  // 1. get the session token from the cookie
+  const cookieStore = cookies();
+  const token = cookieStore.get('sessionToken');
+
+  // 2. validate that session
+  // 3. get the user profile matching the session
+  const user = token && (await getUserBySessionToken(token.value));
+
+  if (!user) {
+    return NextResponse.json({ error: 'session token is not valid' });
+  }
+
   const body = await request.json();
 
   const result = artType.safeParse(body);
@@ -46,7 +64,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const newArt = await createArt(result.data.name);
+  // validate csrf token to make sure the request happens from my server
+  if (!validateTokenWithSecret(user.csrfSecret, result.data.csrfToken)) {
+    return NextResponse.json(
+      {
+        error: 'CSRF token is not valid',
+      },
+      { status: 400 },
+    );
+  }
 
-  return NextResponse.json({ animal: newArt });
+  const newArt = await createArt(result.data.firstName, token.value);
+
+  return NextResponse.json({ art: newArt });
 }

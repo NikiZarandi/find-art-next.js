@@ -11,29 +11,21 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main className="flex flex-wrap justify-center m-5">
-      <div className="text-center">
-        <h1 className="text-6xl m-7">Welcome to Find Art!</h1>
+    <main>
+      <div>
+        <h1>Welcome to Find Art!</h1>
         <div>
-          Building a stronger art & design community through young artist &
-          designer.
-          <mark className="px-6 text-2xl text-white bg-blue-600 dark:bg-blue-500">
-            Find Art.
-          </mark>
+          Building arts & designs community through young artist & designer.
+          <mark>Find Art</mark>
         </div>
 
-        <div className="flex flex-wrap justify-center">
-          <button
-            type="button"
-            className="text-white bg-blue-700 font-regular text-sm rounded m-4 min-w-full h-11"
-          >
-            Login
-          </button>
-          <a className="text-xs font-normal underline"> Register now</a>
+        <div>
+          <button type="button">Login</button>
+          <a> Register now</a>
         </div>
       </div>
-      <footer className="block fixed inset-x-0 bottom-0 z-10 m-6">
-        <div className="flex justify-between">
+      <footer>
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { RegisterResponseBody } from '../../api2/login/route';
+import { RegisterResponseBody } from '../../api/(auth)/register/route';
 
 export default function RegisterForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
@@ -37,7 +37,8 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           return;
         }
 
-        router.push(`/profile/${data.user.username}`);
+        router.replace(`/profile/${data.user.username}`);
+        router.refresh();
       }}
     >
       {errors.map((error) => (

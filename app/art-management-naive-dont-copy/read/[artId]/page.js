@@ -13,8 +13,8 @@ export async function generateMetadata(props) {
   }
 
   return {
-    title: singleArt.firstName,
-    description: `Single art page for ${singleArt.firstName}`,
+    title: singleArt.name,
+    description: `Single art page for ${singleArt.name}`,
   };
 }
 

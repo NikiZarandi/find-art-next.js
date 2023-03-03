@@ -1,4 +1,4 @@
-import { deleteArtById } from '../../../database/arts';
+import { deleteArtById } from '../../../../database/arts';
 
 export const dynamic = 'force-dynamic';
 

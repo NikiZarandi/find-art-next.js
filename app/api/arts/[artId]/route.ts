@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
-  deleteArtById,
-  getArtById,
-  updateArtById,
+  deleteArtsById,
+  getArtsById,
+  updateArtsById,
 } from '../../../../database/arts';
 
 const artType = z.object({
-  name: z.string(),
+  firstName: z.string(),
   type: z.string(),
   accessory: z.string(),
 });
@@ -27,7 +27,7 @@ export async function GET(
     );
   }
 
-  const singleArt = await getArtById(artId);
+  const singleArt = await getArtsById(artId);
 
   return NextResponse.json({ art: singleArt });
 }
@@ -47,9 +47,9 @@ export async function DELETE(
     );
   }
 
-  const singleArt = await deleteArtById(artId);
+  const singleArt = await deleteArtsById(artId);
 
-  return NextResponse.json({ animal: singleArt });
+  return NextResponse.json({ art: singleArt });
 }
 
 export async function PUT(

@@ -4,13 +4,9 @@ import { sql } from './connect';
 export type Art = {
   id: number;
   name: string;
-  discription: number;
-  userId: number;
-  categoryId: number;
-  imageURL: string | null;
 };
 
-// get all art
+// get all arts
 export const getArts = cache(async () => {
   const arts = await sql<Art[]>`
     SELECT * FROM arts
@@ -19,21 +15,20 @@ export const getArts = cache(async () => {
   return arts;
 });
 
-// export const getArtsWithLimitAndOffset = cache(
-//   async (limit: number, offset: number) => {
-//     const arts = await sql<Art[]>`
-//     SELECT * FROM arts
-//     Limit ${limit}
-//     offset ${offset}
-//   `;
+export const getArtsWithLimitAndOffset = cache(
+  async (limit: number, offset: number) => {
+    const arts = await sql<Art[]>`
+    SELECT * FROM arts
+    Limit ${limit}
+    offset ${offset}
+  `;
 
-//     return arts;
-//   },
-// );
+    return arts;
+  },
+);
 
 // get a single art
-export const getArtsById = cache(async (id: number) => {
-  if (!id) return undefined;
+export const getArtById = cache(async (id: number) => {
   const [art] = await sql<Art[]>`
     SELECT
       *
@@ -44,3 +39,23 @@ export const getArtsById = cache(async (id: number) => {
   `;
   return art;
 });
+
+// get a single art only if i have a valid session token
+export const getArtByIdAndSessionToken = cache(
+  async (id: number, token: string) => {
+    const [art] = await sql<Art[]>`
+    SELECT
+      arts.*
+    FROM
+      arts
+    INNER JOIN
+      sessions ON (
+        sessions.token = ${token} AND
+        sessions.expiry_timestamp > now()
+      )
+    WHERE
+      arts.id = ${id}
+  `;
+    return art;
+  },
+);

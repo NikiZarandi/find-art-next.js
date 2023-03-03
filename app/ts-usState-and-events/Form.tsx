@@ -20,7 +20,7 @@ export default function TsUseStateAndEventsForm() {
       <br />
       <br />
       <br />
-      <button onClick={() => setArts([{ id: 1, name: 'balli' }])}>
+      <button onClick={() => setArts([{ id: 1, name: 'bilo' }])}>
         add art
       </button>
       <h2>arts</h2>
