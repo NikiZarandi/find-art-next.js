@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { getUserBySessionToken } from '../database/users';
 import CookieBanner from './CookieBanner';
 
+// import styles from './layout.module.scss';
+
 export const metadata = {
   title: {
     default: 'findart',
@@ -32,10 +34,6 @@ export default async function RootLayout(props: Props) {
   // 3. get the user profile matching the session
   const user = token && (await getUserBySessionToken(token.value));
 
-  const randomNumber = Math.floor(Math.random() * 10);
-  // if i have a user the person is log in
-  // if i have a user the person is log out
-
   return (
     <html lang="en">
       <head />
@@ -49,7 +47,7 @@ export default async function RootLayout(props: Props) {
               <Link href="/categorys">Categirys</Link>
               <Link href="/arts/admin">Admin</Link>
               <Link href="/arts/paginated">paginated</Link>
-              <div>{randomNumber}</div>
+
               <div>
                 {user && user.username}
                 {user ? (
@@ -66,6 +64,7 @@ export default async function RootLayout(props: Props) {
             </div>
           </nav>
         </header>
+
         {props.children}
       </body>
     </html>

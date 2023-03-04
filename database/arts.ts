@@ -4,6 +4,8 @@ import { sql } from './connect';
 export type Art = {
   id: number;
   name: string;
+  description: string;
+  categoryId: number;
 };
 
 // get all arts
@@ -59,3 +61,38 @@ export const getArtByIdAndSessionToken = cache(
     return art;
   },
 );
+
+export const createArt = cache(async (name: string, token: string) => {
+  const [art] = await sql<Art[]>`
+      INSERT INTO arts
+        (name)
+      VALUES
+        (${name})
+      RETURNING *
+    `;
+  return art;
+});
+
+export const updateArtById = cache(async (id: number, name: string) => {
+  const [art] = await sql<Art[]>`
+      UPDATE
+        arts
+      SET
+        name = ${name},
+      WHERE
+        id = ${id}
+      RETURNING *
+    `;
+  return art;
+});
+
+export const deleteArtById = cache(async (id: number) => {
+  const [art] = await sql<Art[]>`
+    DELETE FROM
+      arts
+    WHERE
+      id = ${id}
+    RETURNING *
+  `;
+  return art;
+});

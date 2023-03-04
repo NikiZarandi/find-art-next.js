@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
-  deleteArtsById,
-  getArtsById,
-  updateArtsById,
+  deleteArtById,
+  getArtById,
+  updateArtById,
 } from '../../../../database/arts';
 
 const artType = z.object({
@@ -27,7 +27,7 @@ export async function GET(
     );
   }
 
-  const singleArt = await getArtsById(artId);
+  const singleArt = await getArtById(artId);
 
   return NextResponse.json({ art: singleArt });
 }
@@ -47,7 +47,7 @@ export async function DELETE(
     );
   }
 
-  const singleArt = await deleteArtsById(artId);
+  const singleArt = await deleteArtById(artId);
 
   return NextResponse.json({ art: singleArt });
 }

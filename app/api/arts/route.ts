@@ -1,8 +1,8 @@
+import { validateTokenWithSecret } from '@/app/util/carf';
+import { getArtsWithLimitAndOffset } from '@/database/arts';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { validateTokenWithSecret } from '../../../../util/csrf';
-import { createArt, getArtsWithLimitAndOffset } from '../../../database/arts';
 import { getUserBySessionToken } from '../../../database/users';
 
 const artType = z.object({
