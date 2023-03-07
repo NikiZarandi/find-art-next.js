@@ -1,12 +1,13 @@
 import { getArts } from '@/database/arts';
 import Link from 'next/link';
+import React from 'react';
 
 export const metadata = {
   title: 'Arts',
   description: 'This is my Products page',
 };
 
-export default async function ProductsPage() {
+export default async function ArtsPage() {
   const arts = await getArts();
   return (
     <div>
@@ -18,6 +19,7 @@ export default async function ProductsPage() {
           return (
             <div key={`arts-${art.id}`}>
               <Link href={`/arts/${art.id}`}>{art.name}</Link>
+
               <h2>{art.description}</h2>
               <h2>{art.categoryId}</h2>
             </div>

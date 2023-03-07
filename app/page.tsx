@@ -1,9 +1,11 @@
+import Image from 'next/image';
+import styles from './page.module.scss';
+
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
   title: 'Find Art',
-  description:
-    'Discover a space for community building and cultural preservation, to help users connect with their roots and build a sense of pride and identity around their heritage',
+  description: 'Discover a world of art and design!',
   icons: {
     shortcut: '/icon.svg',
   },
@@ -11,65 +13,76 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <main>
+    <main className={styles.main}>
       <div>
-        <h1>Welcome to Find Art!</h1>
-        <div>
-          Building arts & designs community through young artist & designer.
-          <mark>Find Art</mark>
+        <h1 className={styles.text}>Find Art</h1>
+      </div>
+      <div>
+        <div className={styles.fis}>
+          Arts & designs community through young artists & designers
         </div>
 
-        <div>
+        {/* <div className={styles.butt}>
           <button type="button">Login</button>
-          <a> Register now</a>
+        </div> */}
+        {/* <a  href="/register">
+          {' '}
+          Register now
+        </a> */}
+      </div>
+      <div className={styles.blick}>
+        <div>
+          <Image
+            className={styles.image}
+            src="/images/firstpage/painting.jpg"
+            alt="painting"
+            width="200"
+            height="500"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image}
+            src="/images/firstpage/angosht.jpg"
+            alt="angosht"
+            width="200"
+            height="300"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image}
+            src="/images/firstpage/chair.jpg"
+            alt="chair"
+            width="200"
+            height="300"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image}
+            src="/images/firstpage/jewlery.jpg"
+            alt="jewlery"
+            width="200"
+            height="300"
+          />
         </div>
       </div>
-      <footer>
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-            />
-          </svg>
-        </div>
-      </footer>
+
+      <div className={styles.divElementOne}>
+        We live by the motto: “Our customers are the focus”. Your wishes and
+        concerns are important to us. We want to inspire you with our design
+        ideas.
+      </div>
+      <div>
+        <Image
+          className={styles.ita}
+          src="/images/firstpage/tir.jpeg"
+          alt="tir"
+          width="200"
+          height="300"
+        />
+      </div>
     </main>
   );
 }

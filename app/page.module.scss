@@ -1,0 +1,93 @@
+@media screen and (max-width: 600px) {
+  /* Stilregeln für kleine Bildschirme */
+}
+
+.image {
+  width: 350px;
+  height: 460px;
+  display: block;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10%;
+}
+.text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  text-decoration: none;
+  font-size: 72px;
+  color: rgb(12, 12, 12);
+  text-align: center;
+}
+.main {
+  justify-content: center;
+  background-image: -moz-element(padding-right);
+  align-items: center;
+  display: inline-block;
+}
+.privet {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.regi {
+  justify-content: center;
+  text-decoration: none;
+
+  align-items: center;
+}
+.divElementOne {
+  text-align: justify;
+  text-align: center;
+}
+.ima {
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fis {
+  text-align: center;
+}
+
+.butt {
+  border: none;
+
+  padding: 10px 62px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.regi {
+  text-decoration-color: black;
+}
+
+.blick {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  width: 600px;
+  height: 600px;
+}
+.ita {
+  width: 180px;
+  height: 260px;
+}
+.sec {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.discription {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 600px;
+  height: 600px;
+}

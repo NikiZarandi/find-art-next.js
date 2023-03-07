@@ -14,10 +14,10 @@ type Props = {
   };
 };
 
-export default async function ProductPage(props: Props) {
+export default async function ArtPage(props: Props) {
   console.log('lets see the type', props.params.artId);
   const singleArt = await getArtById(parseInt(props.params.artId));
-  // console.log('seeeeee', singleProduct);
+  // console.log('seeeeee', singleArt);
 
   if (!singleArt) {
     // throw new Error('this action is not allowed with Error id: 213123123');
@@ -33,6 +33,13 @@ export default async function ProductPage(props: Props) {
       <br />
       <br />
       <br />
+      <Image
+        // className={styles.imageProducts}
+        src={`/images/${singleArt.name}-${singleArt.id}.jpeg`}
+        alt={singleArt.description}
+        width="300"
+        height="300"
+      />
     </main>
   );
 }

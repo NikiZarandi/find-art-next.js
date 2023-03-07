@@ -1,8 +1,9 @@
-// import './global.css';
+import './global.scss';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { getUserBySessionToken } from '../database/users';
 import CookieBanner from './CookieBanner';
+import styles from './layout.module.scss';
 
 // import styles from './layout.module.scss';
 
@@ -39,14 +40,20 @@ export default async function RootLayout(props: Props) {
       <head />
       <body>
         <CookieBanner />
-        <header>
+        <header className={styles.header}>
+          <img
+            className={styles.logoz}
+            src="images/firstpage/logo.svg "
+            alt="logo "
+          />
+
           <nav>
-            <div>
-              <Link href="/">Home</Link>
-              <Link href="/arts">Arts</Link>
-              <Link href="/categorys">Categirys</Link>
-              <Link href="/arts/admin">Admin</Link>
-              <Link href="/arts/paginated">paginated</Link>
+            <div className={styles.auth}>
+              <a href="/">Home</a>
+              <a href="/arts">Arts</a>
+              <a href="/categorys">Categorys</a>
+
+              {/* <Link href="/arts/paginated">paginated</Link> */}
 
               <div>
                 {user && user.username}
@@ -66,6 +73,9 @@ export default async function RootLayout(props: Props) {
         </header>
 
         {props.children}
+        <footer className={styles.footer}>
+          copyright animals4everyone 2023
+        </footer>
       </body>
     </html>
   );

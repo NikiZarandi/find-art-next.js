@@ -1,8 +1,8 @@
 'use client';
 
+import { RegisterResponseBody } from '@/app/api/(auth)/login/route';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { RegisterResponseBody } from '../../api/(auth)/register/route';
 
 export default function LoginForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
