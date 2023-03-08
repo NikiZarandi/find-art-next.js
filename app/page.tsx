@@ -72,16 +72,59 @@ export default function HomePage() {
       <div className={styles.divElementOne}>
         We live by the motto: “Our customers are the focus”. Your wishes and
         concerns are important to us. We want to inspire you with our design
+        ideas. We live by the motto: “Our customers are the focus”. Your wishes
+        and concerns are important to us. We want to inspire you with our design
+        ideas.We live by the motto: “Our customers are the focus”. Your wishes
+        and concerns are important to us. We want to inspire you with our design
         ideas.
       </div>
-      <div>
-        <Image
-          className={styles.ita}
-          src="/images/firstpage/tir.jpeg"
-          alt="tir"
-          width="200"
-          height="300"
-        />
+      <br />
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className={styles.cont}>
+        <div>
+          <Image
+            className={styles.image2}
+            src="/images/firstpage/toto.jpg"
+            alt="toto"
+            width="100"
+            height="200"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image2}
+            src="/images/firstpage/earth.jpg"
+            alt="earth"
+            width="100"
+            height="200"
+          />
+        </div>
+      </div>
+      <div className={styles.divElementzeri}>
+        <div className={styles.divElementzero}>
+          <div className={styles.divElementzeri}>
+            gallery painting ideas illustration connection inspiration graphic
+            art in context
+          </div>
+        </div>
+
+        <div>
+          <Image
+            className={styles.image3}
+            src="/images/firstpage/arrti.png"
+            alt="arti"
+            width="600"
+            height="700"
+          />
+        </div>
+        <div className={styles.texti}>
+          mak gallery london art gallery exhibitions museum of modern Art
+        </div>
       </div>
     </main>
   );

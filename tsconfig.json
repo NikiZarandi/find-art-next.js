@@ -37,7 +37,8 @@
     "migrations/1677432150-createTableArts.mjs",
     "migrations/1677432149-insertIntoTableCategory.mjs",
     "migrations/1677430232-creatTableCategory.mjs",
-    "migrations/1677432151-createTableSessions.mjs"
+    "migrations/1677432151-createTableSessions.mjs",
+    "app/profile / [username]/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

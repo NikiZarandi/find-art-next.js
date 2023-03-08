@@ -38,8 +38,13 @@
   align-items: center;
 }
 .divElementOne {
-  text-align: justify;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
 }
 .ima {
   display: block;
@@ -86,8 +91,61 @@
 }
 .discription {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   width: 600px;
   height: 600px;
+}
+
+.mitte {
+  align-items: center;
+  display: inline-block;
+  text-align: center;
+}
+
+.image2 {
+  width: 180px;
+  height: 300px;
+  display: block;
+  // margin-top: 80px;
+  // margin-bottom: 80px;
+  // padding-left: 5px;
+  // padding-right: 5px;
+  border-radius: 10%;
+}
+.cont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+.image3 {
+  width: 900px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// .divElementzero {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr;
+//   grid-template-rows: 1fr 1fr 1fr;
+//   width: 600px;
+//   height: 600px;
+// }
+.divElementzeri {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.texti {
+  display: block;
 }

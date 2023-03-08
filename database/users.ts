@@ -1,3 +1,23 @@
+// import { sql } from './connect';
+
+// type User = {
+//   id: number;
+//   username: string;
+//   passwordHash: string;
+// };
+
+// export async function getUserByUsername(username: string) {
+//   const [user] = await sql<User[]>`
+//       SELECT
+//         *
+//       FROM
+//         users
+//       WHERE
+//         username = ${username}
+//     `;
+//   return user;
+// }
+
 import { cache } from 'react';
 import { sql } from './connect';
 

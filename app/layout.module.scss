@@ -19,6 +19,7 @@
     }
   }
 }
+
 .header {
   display: flex;
   justify-content: center;
@@ -27,13 +28,15 @@
 }
 
 .footer {
-  background-color: #ddd;
+  background-color: #100f0f;
   border-radius: 6px;
   margin: 20px 0;
   display: flex;
   margin-top: 20px;
   padding: 150px;
-  border-top: 2px solid var(--main-bg-color);
+  color: #fff;
+  margin-top: 25%;
+  font-size: 24px;
 }
 
 .auth {
@@ -47,4 +50,7 @@
   height: auto;
   text-decoration: none;
   left: -1.2em;
+}
+.body {
+  align-items: center;
 }

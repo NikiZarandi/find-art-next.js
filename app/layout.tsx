@@ -38,7 +38,7 @@ export default async function RootLayout(props: Props) {
   return (
     <html lang="en">
       <head />
-      <body>
+      <body className={styles.body}>
         <CookieBanner />
         <header className={styles.header}>
           <img
@@ -74,7 +74,11 @@ export default async function RootLayout(props: Props) {
 
         {props.children}
         <footer className={styles.footer}>
-          copyright animals4everyone 2023
+          <div className={styles.textii}>
+            <p>SUPPORT</p>
+            <p>COMMUNITY</p>
+            <p>CONTACT</p>
+          </div>
         </footer>
       </body>
     </html>
