@@ -1,6 +1,6 @@
 'use client';
 
-import { RegisterResponseBody } from '@/app/api/(auth)/login/route';
+import { RegisterResponseBody } from '@/app/api/login/rout';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 

@@ -79,6 +79,18 @@ export default async function RootLayout(props: Props) {
             <p>COMMUNITY</p>
             <p>CONTACT</p>
           </div>
+          <div>
+            <img
+              className={styles.logo}
+              src="icons/instagram.png "
+              alt="instagram "
+            />
+            <img
+              className={styles.logo2}
+              src="icons/facebook.png "
+              alt="facebook"
+            />
+          </div>
         </footer>
       </body>
     </html>

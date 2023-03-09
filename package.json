@@ -31,7 +31,9 @@
     "react-dom": "18.2.0",
     "sass": "^1.58.3",
     "sharp": "^0.31.3",
-    "typescript": "4.9.5"
+    "svg-icon": "^0.8.2",
+    "typescript": "4.9.5",
+    "zod": "^3.8.2-alpha.6"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",

@@ -1,6 +1,6 @@
 'use client';
 
-import { RegisterResponseBody } from '@/app/api/(auth)/login/route';
+import { RegisterResponseBody } from '@/app/api/(auth)/route';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -37,8 +37,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           return;
         }
 
-        router.replace(`/profile/${data.user.username}`);
-        router.refresh();
+        router.push(`/profile/${data.user.username}`);
       }}
     >
       {errors.map((error) => (
