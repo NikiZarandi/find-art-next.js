@@ -1,6 +1,6 @@
 'use client';
 
-import { RegisterResponseBody } from '@/app/api/login/rout';
+import { RegisterResponseBodyPost } from '@/app/api/(auth)/register/route';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -20,7 +20,7 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
           body: JSON.stringify({ username, password }),
         });
 
-        const data: RegisterResponseBody = await response.json();
+        const data: RegisterResponseBodyPost = await response.json();
 
         if ('errors' in data) {
           setErrors(data.errors);

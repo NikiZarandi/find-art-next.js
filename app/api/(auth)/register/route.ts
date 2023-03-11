@@ -1,18 +1,23 @@
+import crypto from 'node:crypto';
+import { createSerializedRegisterSessionTokenCookie } from '@/util/cookies';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createUser, getUserByUsername } from '../../../database/users';
+import { createSession } from '../../../../database/sessions';
+import { createUser, getUserByUsername } from '../../../../database/users';
 
 const userSchema = z.object({
   username: z.string(),
   password: z.string(),
 });
 
-export type RegisterResponseBody =
+export type RegisterResponseBodyPost =
   | { errors: { message: string }[] }
   | { user: { username: string } };
 
-export const POST = async (request: NextRequest) => {
+export async function POST(
+  request: NextRequest,
+): Promise<NextResponse<RegisterResponseBodyPost>> {
   // 1. validate the data
   const body = await request.json();
 
@@ -52,7 +57,6 @@ export const POST = async (request: NextRequest) => {
 
   // 3. hash the password
   const passwordHash = await bcrypt.hash(result.data.password, 12);
-  console.log(passwordHash);
 
   // 4. create the user
   const newUser = await createUser(result.data.username, passwordHash);
@@ -64,6 +68,31 @@ export const POST = async (request: NextRequest) => {
     );
   }
 
-  // 5. return the new username
-  return NextResponse.json({ user: { username: newUser.username } });
-};
+  // 5. create a session (in the next chapter)
+  // - create the token
+  const token = crypto.randomBytes(80).toString('base64');
+
+  // - create the session
+  const session = await createSession(token, newUser.id);
+
+  if (!session) {
+    return NextResponse.json(
+      { errors: [{ message: 'session creation failed' }] },
+      { status: 500 },
+    );
+  }
+
+  const serializedCookie = createSerializedRegisterSessionTokenCookie(
+    session.token,
+  );
+
+  // 6. return the new username
+  return NextResponse.json(
+    { user: { username: newUser.username } },
+    {
+      status: 200,
+      // - Attach the new cookie serialized to the header of the response
+      headers: { 'Set-Cookie': serializedCookie },
+    },
+  );
+}

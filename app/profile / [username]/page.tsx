@@ -1,23 +1,21 @@
-export default function UserProfile() {
-  return <h1>user Profile</h1>;
+import { notFound } from 'next/navigation';
+import { getUserByUsername } from '../../../database/users';
+
+type Props = {
+  params: { username: string; userId: number };
+};
+
+export default async function UserProfile({ params }: Props) {
+  const user = await getUserByUsername(params.username);
+  console.log('this is user', user);
+
+  if (!user) {
+    notFound();
+  }
+
+  return (
+    <main>
+      <p>{user.username}</p>
+    </main>
+  );
 }
-
-// import { notFound } from 'next/navigation';
-// import { getUserByUsername } from '../../../database/users';
-
-// type Props = { params: { username: string } };
-
-// export default async function UserProfile({ params }: Props) {
-//   const user = await getUserByUsername(params.username);
-
-//   if (!user) {
-//     notFound();
-//   }
-
-//   return (
-//     <>
-//       <h1>{user.username}</h1>
-//       <p>id: {user.id}</p>
-//     </>
-//   );
-// }

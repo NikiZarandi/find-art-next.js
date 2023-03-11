@@ -5,11 +5,12 @@
     padding: 50px;
     display: flex;
 
-    text-decoration-color: black;
-
     & a + a,
     span + a {
       margin-left: 30px;
+    }
+    a {
+      text-decoration: none;
     }
 
     & div {
@@ -24,12 +25,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration-color: black;
+
+  text-decoration: solid;
 }
 
 .footer {
   background-color: #100f0f;
-  border-radius: 6px;
+  align-items: center;
   margin: 20px 0;
   display: flex;
   margin-top: 20px;
@@ -37,6 +39,7 @@
   color: #fff;
   margin-top: 25%;
   font-size: 24px;
+  background-color: #131212;
 }
 
 .auth {
@@ -56,4 +59,14 @@
 }
 .logo {
   size: 30cm;
+}
+.textii {
+  hyphens: auto;
+  text-align: justify;
+  display: c;
+  align-items: center;
+}
+.footerogo {
+  background-color: #100f0f;
+  align-items: center;
 }

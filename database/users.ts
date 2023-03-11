@@ -1,40 +1,20 @@
-// import { sql } from './connect';
-
-// type User = {
-//   id: number;
-//   username: string;
-//   passwordHash: string;
-// };
-
-// export async function getUserByUsername(username: string) {
-//   const [user] = await sql<User[]>`
-//       SELECT
-//         *
-//       FROM
-//         users
-//       WHERE
-//         username = ${username}
-//     `;
-//   return user;
-// }
-
 import { cache } from 'react';
 import { sql } from './connect';
 
-type User = {
+export type User = {
   id: number;
   username: string;
+};
+
+type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
 export const getUserBySessionToken = cache(async (token: string) => {
-  const [user] = await sql<
-    { id: number; username: string; csrfSecret: string }[]
-  >`
+  const [user] = await sql<{ id: number; username: string }[]>`
     SELECT
       users.id,
-      users.username,
-      sessions.csrf_secret
+      users.username
     FROM
       users
     INNER JOIN
@@ -49,7 +29,7 @@ export const getUserBySessionToken = cache(async (token: string) => {
 
 export const getUserByUsernameWithPasswordHash = cache(
   async (username: string) => {
-    const [user] = await sql<User[]>`
+    const [user] = await sql<UserWithPasswordHash[]>`
     SELECT
       *
     FROM

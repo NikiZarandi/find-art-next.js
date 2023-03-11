@@ -11,6 +11,6 @@ export async function up(sql) {
 
 export async function down(sql) {
   await sql`
-  DROP TABLE users
+  DROP TABLE sessions
 `;
 }

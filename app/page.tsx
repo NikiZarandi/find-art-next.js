@@ -31,7 +31,7 @@ export default function HomePage() {
         </a> */}
       </div>
       <div className={styles.blick}>
-        <div>
+        <div className={styles.lableone}>
           <Image
             className={styles.image}
             src="/images/firstpage/painting.jpg"
@@ -68,7 +68,32 @@ export default function HomePage() {
           />
         </div>
       </div>
+      <div className={styles.buttons}>
+        <div>
+          <button type="button" className={styles.button}>
+            PAINTING
+          </button>
+        </div>
 
+        <div>
+          <button type="button" className={styles.button}>
+            GRAPHIC DESIGN
+          </button>
+        </div>
+
+        <div>
+          <button type="button" className={styles.button}>
+            INDUSTRIAL DESIGN
+          </button>
+        </div>
+
+        <div>
+          <button type="button" className={styles.button}>
+            JEWELLERY
+          </button>
+        </div>
+      </div>
+      <p className={styles.p}> lalalala </p>
       <div className={styles.divElementOne}>
         We live by the motto: “Our customers are the focus”. Your wishes and
         concerns are important to us. We want to inspire you with our design
@@ -105,8 +130,14 @@ export default function HomePage() {
           />
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className={styles.divElementzeri}>
-        <div className={styles.divElementzero}>
+        <div>
           <div className={styles.divElementzeri}>
             gallery painting ideas illustration connection inspiration graphic
             art in context
@@ -116,8 +147,8 @@ export default function HomePage() {
         <div>
           <Image
             className={styles.image3}
-            src="/images/firstpage/arrti.png"
-            alt="arti"
+            src="/images/firstpage/galeri.jpeg"
+            alt="galery"
             width="600"
             height="700"
           />

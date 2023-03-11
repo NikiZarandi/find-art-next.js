@@ -51,10 +51,9 @@ export default async function RootLayout(props: Props) {
             <div className={styles.auth}>
               <a href="/">Home</a>
               <a href="/arts">Arts</a>
-              <a href="/categorys">Categorys</a>
+              {/* <a href="/categorys">Categories</a> */}
 
               {/* <Link href="/arts/paginated">paginated</Link> */}
-
               <div>
                 {user && user.username}
                 {user ? (
@@ -75,21 +74,14 @@ export default async function RootLayout(props: Props) {
         {props.children}
         <footer className={styles.footer}>
           <div className={styles.textii}>
-            <p>SUPPORT</p>
-            <p>COMMUNITY</p>
+            <p>FIND ART</p>
+            <p>Email: findart@artanddesign.com</p>
             <p>CONTACT</p>
-          </div>
-          <div>
-            <img
-              className={styles.logo}
-              src="icons/instagram.png "
-              alt="instagram "
-            />
-            <img
-              className={styles.logo2}
-              src="icons/facebook.png "
-              alt="facebook"
-            />
+
+            <img src="icons/instagram.png " alt="instagram " />
+            <div>
+              <img src="icons/facebook.svg " alt="facebook" />
+            </div>
           </div>
         </footer>
       </body>
