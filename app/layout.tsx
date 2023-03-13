@@ -81,9 +81,13 @@ export default async function RootLayout(props: Props) {
             <p>Email: findart@artanddesign.com</p>
             <p>CONTACT</p>
 
-            <img src="icons/instagram.png " alt="instagram " />
+            <img src="images/icons/icons8-instagram-48.svg " alt="instagram " />
             <div>
-              <img src="icons/facebook.svg " alt="facebook" />
+              <img
+                className={styles.facebookIcon}
+                src="images/icons/facebook-line-icon.svg "
+                alt="facebook"
+              />
             </div>
           </div>
         </footer>

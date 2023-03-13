@@ -58,6 +58,7 @@ export default function HomePage() {
             height="300"
           />
         </div>
+
         <div>
           <Image
             className={styles.image}
@@ -110,44 +111,7 @@ export default function HomePage() {
       <br />
       <br />
       <br />
-      <div className={styles.cont}>
-        <div>
-          <Image
-            className={styles.image2}
-            src="/images/logo/er.jpg"
-            alt="toto"
-            width="100"
-            height="200"
-          />
-        </div>
-        <div>
-          <Image
-            className={styles.image2}
-            src="/images/logo/et.jpg"
-            alt="earth"
-            width="100"
-            height="200"
-          />
-        </div>
-        <div>
-          <Image
-            className={styles.image2}
-            src="/images/logo/zu.jpg"
-            alt="earth"
-            width="100"
-            height="200"
-          />
-        </div>
-        <div>
-          <Image
-            className={styles.image2}
-            src="/images/logo/kk.jpg"
-            alt="earth"
-            width="100"
-            height="200"
-          />
-        </div>
-      </div>
+
       <br />
       <br />
       <br />

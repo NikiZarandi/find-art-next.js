@@ -1,4 +1,5 @@
 import crypto from 'node:crypto';
+import { createCsrfSecret } from '@/util/carf';
 import { createSerializedRegisterSessionTokenCookie } from '@/util/cookies';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
@@ -72,8 +73,10 @@ export async function POST(
   // - create the token
   const token = crypto.randomBytes(80).toString('base64');
 
+  const csrfSecret = createCsrfSecret();
+
   // - create the session
-  const session = await createSession(token, newUser.id);
+  const session = await createSession(token, newUser.id, csrfSecret);
 
   if (!session) {
     return NextResponse.json(
