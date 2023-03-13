@@ -11,10 +11,13 @@ type UserWithPasswordHash = User & {
 };
 
 export const getUserBySessionToken = cache(async (token: string) => {
-  const [user] = await sql<{ id: number; username: string }[]>`
+  const [user] = await sql<
+    { id: number; username: string; csrfSecret: string }[]
+  >`
     SELECT
       users.id,
-      users.username
+      users.username,
+      sessions.csrf_secret
     FROM
       users
     INNER JOIN

@@ -1,6 +1,6 @@
 export const artNotFoundMetadata = {
   title: 'Art Not Found',
-  description: "sorry can't find the artyou are looking for",
+  description: "sorry can't find the art you are looking for",
 };
 
 export default function ArtNotFound() {

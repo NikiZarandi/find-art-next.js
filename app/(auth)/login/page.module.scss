@@ -1,0 +1,33 @@
+.loginform {
+  position: relative;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-decoration: solid;
+  margin-top: 70px;
+  padding: 330px;
+  background-image: url('/images/logo/abr.jpeg');
+
+  width: 40%;
+
+  background-size: cover;
+  background-position: center center;
+  background-origin: padding-box;
+  border-radius: 10%;
+}
+.username {
+  text-decoration-color: white;
+}
+.password {
+  margin-bottom: 10%;
+  text-decoration-color: white;
+}
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text {
+  height: 30px;
+  width: 250px;
+}

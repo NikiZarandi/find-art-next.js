@@ -25,7 +25,7 @@
     "dotenv-safe": "^8.2.0",
     "js-cookie": "^3.0.1",
     "ley": "^0.8.1",
-    "next": "13.2.3",
+    "next": "^13.2.4",
     "patch-package": "^6.5.1",
     "postgres": "^3.3.3",
     "react": "18.2.0",
@@ -34,7 +34,7 @@
     "sharp": "^0.31.3",
     "svg-icon": "^0.8.2",
     "typescript": "4.9.5",
-    "zod": "^3.8.2-alpha.6"
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
@@ -73,13 +73,13 @@
     "typescript": "4.9.5"
   },
   "resolutions": {
-    "@typescript-eslint/eslint-plugin": "5.53.0",
-    "@typescript-eslint/parser": "5.53.0",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
+    "@typescript-eslint/parser": "5.54.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jest": "27.2.1",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
-    "@typescript-eslint/utils": "5.53.0"
+    "@typescript-eslint/utils": "5.54.0"
   }
 }

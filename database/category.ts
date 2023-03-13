@@ -9,7 +9,7 @@ export type Category = {
 // get all art
 export const getArt = cache(async () => {
   const category = await sql<Category[]>`
-    SELECT * FROM art
+    SELECT * FROM category
   `;
 
   return category;

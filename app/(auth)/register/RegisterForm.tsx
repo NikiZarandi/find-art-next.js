@@ -1,9 +1,10 @@
 'use client';
 
-import { getSafeReturnToPath } from '@/util/validation';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { getSafeReturnToPath } from '../../../util/validation';
 import { RegisterResponseBodyPost } from '../../api/(auth)/register/route';
+import styles from './page.module.scss';
 
 export default function RegisterForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
@@ -42,21 +43,25 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
       {errors.map((error) => (
         <div key={`error-${error.message}`}>Error: {error.message}</div>
       ))}
-      <label>
-        username:
-        <input
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button>Register</button>
+      <div className={styles.input}>
+        <div className={styles.registerform}>
+          <label className={styles.username}>
+            username:
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.currentTarget.value)}
+            />
+          </label>
+          <label className={styles.password}>
+            password:
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </label>
+          <button className={styles.text}>Register</button>
+        </div>
+      </div>
     </form>
   );
 }

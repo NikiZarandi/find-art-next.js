@@ -114,7 +114,7 @@ export default function HomePage() {
         <div>
           <Image
             className={styles.image2}
-            src="/images/firstpage/toto.jpg"
+            src="/images/logo/er.jpg"
             alt="toto"
             width="100"
             height="200"
@@ -123,7 +123,25 @@ export default function HomePage() {
         <div>
           <Image
             className={styles.image2}
-            src="/images/firstpage/earth.jpg"
+            src="/images/logo/et.jpg"
+            alt="earth"
+            width="100"
+            height="200"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image2}
+            src="/images/logo/zu.jpg"
+            alt="earth"
+            width="100"
+            height="200"
+          />
+        </div>
+        <div>
+          <Image
+            className={styles.image2}
+            src="/images/logo/kk.jpg"
             alt="earth"
             width="100"
             height="200"
@@ -147,7 +165,7 @@ export default function HomePage() {
         <div>
           <Image
             className={styles.image3}
-            src="/images/firstpage/galeri.jpeg"
+            src="/images/firstpage/badbadak.jpeg"
             alt="galery"
             width="600"
             height="700"
