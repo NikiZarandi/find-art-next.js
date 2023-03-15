@@ -1,78 +1,93 @@
+import { cache } from 'react';
 import { sql } from './connect';
 
 export type Comment = {
   id: number;
+  content: string;
+  locationId: number;
   userId: number;
-  artId: number;
-  text: string;
 };
-export type CommentDTO = {
+
+export type CommentWithUsername = {
   id: number;
+  content: string;
+  locationId: number;
   userId: number;
-  username: string | undefined;
-  artId: number;
-  text: string;
+  userName: string;
 };
 
-export async function getComments() {
-  const comments = await sql<Comment[]>`
-SELECT * FROM comments;
-`;
-  return comments;
-}
-export async function getCommentById(id: number) {
-  const [comment] = await sql<Comment[]>`
-  SELECT * FROM comments WHERE id=${id}`;
+export const getCommentsForLocationWithUsername = cache(
+  async (locationId: number) => {
+    const commentsWithUsername = await sql<CommentWithUsername[]>`
+  SELECT
+    *
+  FROM
+    comments
+  INNER JOIN
+    users ON comments.user_id = users.id
+  WHERE
+    comments.location_id = ${locationId}
+  `;
 
-  return comment;
-}
-export async function createComment(
-  text: string,
-  artId: number,
-  userId: number,
-) {
-  const [comment] = await sql<Comment[]>`
-    INSERT INTO comments
-      ( text,
-       event_id,
-       user_id
-       )
-    VALUES
-      (${text},${artId},${userId})
-    RETURNING *
+    return commentsWithUsername;
+  },
+);
+
+// get all comments for single location
+export const getCommentsForLocation = cache(async (locationId: number) => {
+  const comments = await sql<CommentWithUsername[]>`
+    SELECT * FROM comments WHERE comments.location_id = ${locationId}
   `;
-  return comment;
-}
-export async function getCommentByIdAndValidSessionToken(
-  id: number,
-  token: string | undefined,
-) {
-  if (!token) return undefined;
-  const [comment] = await sql<Comment[]>`
-    SELECT
-      comments.*
-    FROM
-      comments,
-      sessions
-    WHERE
-      sessions.token = ${token}
-    AND
-      sessions.expiry_timestamp > now()
-    AND
-      comments.id = ${id}
-  `;
-  return comment;
-}
-export async function getFoundCommentByEventId(id: number) {
-  const comments = await sql<CommentDTO[]>`
-  SELECT comments.id, comments.text, comments.user_id, comments.event_id, users.username
-  FROM comments inner join users on comments.user_id =users.id
-  WHERE comments.event_id=${id};
-  `;
+
   return comments;
-}
-export async function deleteCommentById(id: number) {
-  const [comment] = await sql<Comment[]>`
+});
+
+// get a single comment
+export const getCommentById = cache(async (id: number) => {
+  const [comment] = await sql<CommentWithUsername[]>`
+    SELECT
+      *
+    FROM
+      comments
+    WHERE
+      id = ${id}
+  `;
+  return comment;
+});
+
+export const createComment = cache(
+  async (
+    content: string,
+    locationId: number,
+    userId: number,
+    userName: string,
+  ) => {
+    const [comment] = await sql<CommentWithUsername[]>`
+      INSERT INTO comments
+        (content, location_id, user_id, user_name)
+      VALUES
+        (${content}, ${locationId}, ${userId}, ${userName})
+      RETURNING *
+    `;
+    return comment;
+  },
+);
+
+export const updateCommentById = cache(async (id: number, content: string) => {
+  const [comment] = await sql<CommentWithUsername[]>`
+      UPDATE
+        comments
+      SET
+        content = ${content}
+      WHERE
+        id = ${id}
+      RETURNING *
+    `;
+  return comment;
+});
+
+export const deleteCommentById = cache(async (id: number) => {
+  const [comment] = await sql<CommentWithUsername[]>`
     DELETE FROM
       comments
     WHERE
@@ -80,4 +95,4 @@ export async function deleteCommentById(id: number) {
     RETURNING *
   `;
   return comment;
-}
+});
