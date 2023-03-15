@@ -8,7 +8,7 @@ import styles from './layout.module.scss';
 export const metadata = {
   title: {
     default: 'arts4everyone',
-    template: '%s | animals4everyone',
+    template: '%s | find art',
   },
   icons: {
     shortcut: '/favicon.ico',
@@ -49,8 +49,8 @@ export default async function RootLayout(props: Props) {
             alt="logo "
           />
 
-          <nav>
-            <div className={styles.auth}>
+          <nav className={styles.nav}>
+            <div>
               <a href="/">Home</a>
               <a href="/arts">Arts</a>
               {/* <div>{randomNumber}</div> */}
@@ -78,8 +78,8 @@ export default async function RootLayout(props: Props) {
         <footer className={styles.footer}>
           <div className={styles.textii}>
             <p>FIND ART</p>
-            <p>Email: findart@artanddesign.com</p>
             <p>CONTACT</p>
+            <p>Email: findart@artanddesign.com</p>
 
             <img src="images/icons/icons8-instagram-48.svg " alt="instagram " />
             <div>
@@ -89,6 +89,8 @@ export default async function RootLayout(props: Props) {
                 alt="facebook"
               />
             </div>
+
+            <p>© Copyright 2023 - Find Art. All rights reserved. </p>
           </div>
         </footer>
       </body>

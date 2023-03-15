@@ -45,6 +45,9 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
       ))}
       <div className={styles.input}>
         <div className={styles.registerform}>
+          <div className={styles.findart}>
+            <h1>FIND ART</h1>
+          </div>
           <label className={styles.username}>
             username:
             <input
@@ -59,7 +62,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
           </label>
-          <button className={styles.text}>Register</button>
+          <button className={styles.button}>Register</button>
         </div>
       </div>
     </form>

@@ -3,6 +3,7 @@
 import { RegisterResponseBodyPost } from '@/app/api/(auth)/register/route';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import styles from './page.module.scss';
 
 export default function LoginForm(props: { returnTo?: string | string[] }) {
   const [username, setUsername] = useState('');
@@ -44,21 +45,28 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
       {errors.map((error) => (
         <div key={`error-${error.message}`}>Error: {error.message}</div>
       ))}
-      <label>
-        username:
-        <input
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-        />
-      </label>
-      <label>
-        password:
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-        />
-      </label>
-      <button>Login</button>
+      <div>
+        <div className={styles.loginform}>
+          <div className={styles.findart}>
+            <h1>FIND ART</h1>
+          </div>
+          <label className={styles.username}>
+            username:
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.currentTarget.value)}
+            />
+          </label>
+          <label className={styles.password}>
+            password:
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.currentTarget.value)}
+            />
+          </label>
+          <button className={styles.button}>Login</button>
+        </div>
+      </div>
     </form>
   );
 }

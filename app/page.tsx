@@ -31,14 +31,21 @@ export default function HomePage() {
         </a> */}
       </div>
       <div className={styles.blick}>
-        <div className={styles.lableone}>
-          <Image
-            className={styles.image}
-            src="/images/firstpage/painting.jpg"
-            alt="painting"
-            width="200"
-            height="500"
-          />
+        <div className={styles.fotobutton}>
+          <div>
+            <Image
+              className={styles.image}
+              src="/images/firstpage/painting.jpg"
+              alt="painting"
+              width="200"
+              height="500"
+            />
+            <div>
+              <button type="button" className={styles.button}>
+                PAINTING
+              </button>
+            </div>
+          </div>
         </div>
         <div>
           <Image
@@ -48,6 +55,11 @@ export default function HomePage() {
             width="200"
             height="300"
           />
+          <div>
+            <button type="button" className={styles.button}>
+              GRAPHIC DESIGN
+            </button>
+          </div>
         </div>
         <div>
           <Image
@@ -57,6 +69,12 @@ export default function HomePage() {
             width="200"
             height="300"
           />
+
+          <div>
+            <button type="button" className={styles.button}>
+              INDUSTRIAL DESIGN
+            </button>
+          </div>
         </div>
 
         <div>
@@ -67,33 +85,14 @@ export default function HomePage() {
             width="200"
             height="300"
           />
+          <div>
+            <button type="button" className={styles.button}>
+              JEWELLERY
+            </button>
+          </div>
         </div>
       </div>
-      <div className={styles.buttons}>
-        <div>
-          <button type="button" className={styles.button}>
-            PAINTING
-          </button>
-        </div>
 
-        <div>
-          <button type="button" className={styles.button}>
-            GRAPHIC DESIGN
-          </button>
-        </div>
-
-        <div>
-          <button type="button" className={styles.button}>
-            INDUSTRIAL DESIGN
-          </button>
-        </div>
-
-        <div>
-          <button type="button" className={styles.button}>
-            JEWELLERY
-          </button>
-        </div>
-      </div>
       <p className={styles.p}> lalalala </p>
       <div className={styles.divElementOne}>
         We live by the motto: “Our customers are the focus”. Your wishes and

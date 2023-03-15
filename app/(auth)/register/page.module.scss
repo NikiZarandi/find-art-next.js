@@ -1,33 +1,49 @@
 .registerform {
-  position: relative;
   display: grid;
+
   justify-content: center;
   align-items: center;
   text-decoration: solid;
-  margin-top: 70px;
+
   padding: 330px;
-  background-image: url('/images/logo/abr.jpeg');
-
-  width: 40%;
-
+  background-image: url('/images/firstpage/fin9.png');
+  padding-left: 0%;
   background-size: cover;
   background-position: center center;
-  background-origin: padding-box;
+
   border-radius: 10%;
 }
 .username {
   text-decoration-color: white;
+  margin-bottom: 6%;
 }
 .password {
   margin-bottom: 10%;
   text-decoration-color: white;
+  width: 300px;
 }
 .input {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: rgb(34, 31, 31);
+  font-size: 16px;
 }
 .text {
   height: 30px;
-  width: 250px;
+  width: 200px;
+
+  color: rgb(14, 12, 14);
+}
+
+.button {
+  height: 20px;
+  width: 235px;
+  background-color: rgb(1, 1, 4);
+  color: rgb(255, 255, 255);
+  height: 20px;
+  width: 235px;
+}
+.findart {
+  text-size-adjust: 40%;
 }
