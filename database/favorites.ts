@@ -3,7 +3,7 @@ import { sql } from './connect';
 
 export type Favorite = {
   id: number;
-  locationId: number;
+  imageUrl: string;
   userId: number;
 };
 
@@ -30,8 +30,8 @@ export const getFavoriteById = cache(async (id: number) => {
   return favorite;
 });
 
-export const getFavoriteByUserAndLocation = cache(
-  async (userId: number, locationId: number) => {
+export const getFavoriteByUserAndImage = cache(
+  async (userId: number, imageId: number) => {
     const [favorite] = await sql<Favorite[]>`
   SELECT
     user_id,
@@ -40,26 +40,24 @@ export const getFavoriteByUserAndLocation = cache(
     favorites
   WHERE
     user_id = ${userId} AND
-    location_id = ${locationId}
+    image_id = ${imageId}
   `;
 
     return favorite;
   },
 );
 
-export const createFavorite = cache(
-  async (locationId: number, userId: number) => {
-    const [favorite] = await sql<Favorite[]>`
+export const createFavorite = cache(async (userId: number, imageId: number) => {
+  const [favorite] = await sql<Favorite[]>`
     INSERT INTO favorites
-     (location_id, user_id)
+     (image_id, user_id)
     VALUES
-      (${locationId}, ${userId})
+      (${imageId}, ${userId})
     RETURNING *
   `;
 
-    return favorite;
-  },
-);
+  return favorite;
+});
 
 export const deleteFavoriteById = cache(async (id: number) => {
   const [favorite] = await sql<Favorite[]>`
@@ -74,28 +72,27 @@ export const deleteFavoriteById = cache(async (id: number) => {
 
 export type FavoriteWithLocationInfo = {
   favoriteId: number;
-  locationId: number;
-  locationName: string;
-  locationOpeningHours: string;
+  imageId: number;
+
   userId: number;
 };
 
-export const getFavoriteByIdWithLocationInfo = cache(async (userId: number) => {
-  const favoritesWithLocationInfo = await sql<FavoriteWithLocationInfo[]>`
-  SELECT
-    favorites.id AS favorite_id,
-    locations.id AS location_id,
-    locations.name AS location_name,
-    locations.opening_hours AS location_opening_hours,
-    users.id AS user_id
-  FROM
-    favorites
-  INNER JOIN
-    locations ON favorites.location_id = locations.id
-  INNER JOIN
-    users ON favorites.user_id = users.id
-  WHERE
-    favorites.user_id = ${userId}
-  `;
-  return favoritesWithLocationInfo;
-});
+// export const getFavoriteByIdWithLocationInfo = cache(async (userId: number) => {
+//   const favoritesWithLocationInfo = await sql<FavoriteWithLocationInfo[]>`
+//   SELECT
+//     favorites.id AS favorite_id,
+//     locations.id AS location_id,
+//     locations.name AS location_name,
+//     locations.opening_hours AS location_opening_hours,
+//     users.id AS user_id
+//   FROM
+//     favorites
+//   INNER JOIN
+//     locations ON favorites.location_id = locations.id
+//   INNER JOIN
+//     users ON favorites.user_id = users.id
+//   WHERE
+//     favorites.user_id = ${userId}
+//   `;
+//   return favoritesWithLocationInfo;
+// });

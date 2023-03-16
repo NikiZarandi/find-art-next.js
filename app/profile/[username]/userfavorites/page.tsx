@@ -28,23 +28,20 @@ export default async function UserFavoritse({ params }: Props) {
         {favorites.map((favorite) => {
           return (
             <div
-              key={`location-${favorite.locationId}`}
+              key={`location-${favorite.imageId}`}
               className="card w-96 bg-base-100 shadow-xl my-2 items-center"
             >
-              {/* <Link href={`/locations/${favorite.locationId}`}> */}
-              <figure className="px-10 pt-10">
-                <Image
-                  src={`/images/${favorite.locationId}.jpg`}
-                  alt="location image"
-                  width="200"
-                  height="200"
-                />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h3 className="card-title">{favorite.locationName}</h3>
-                <p>{favorite.locationOpeningHours}</p>
-              </div>
-              {/* </Link> */}
+              <Link href={`/locations/${favorite.imageId}`}>
+                <figure className="px-10 pt-10">
+                  <Image
+                    src={`/images/${favorite.imageId}.jpg`}
+                    alt="location image"
+                    width="200"
+                    height="200"
+                  />
+                </figure>
+                <div className="card-body items-center text-center"></div>
+              </Link>
               <div className="mb-2 -mt-5">
                 <RemoveFavorite favorite={favorite} />
               </div>
