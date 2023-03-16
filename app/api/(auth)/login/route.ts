@@ -1,24 +1,23 @@
 import crypto from 'node:crypto';
-import { createCsrfSecret } from '@/util/carf';
+import { createSerializedRegisterSessionTokenCookie } from '@/util/cookies';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createSession } from '../../../../database/sessions';
-import { createUser, getUserByUsername } from '../../../../database/users';
-import { createSerializedRegisterSessionTokenCookie } from '../../../../util/cookies';
+import { getUserByUsernameWithPasswordHash } from '../../../../database/users';
 
 const userSchema = z.object({
   username: z.string(),
   password: z.string(),
 });
 
-export type RegisterResponseBodyPost =
+export type LoginResponseBodyPost =
   | { errors: { message: string }[] }
   | { user: { username: string } };
 
 export async function POST(
   request: NextRequest,
-): Promise<NextResponse<RegisterResponseBodyPost>> {
+): Promise<NextResponse<LoginResponseBodyPost>> {
   // 1. validate the data
   const body = await request.json();
 
@@ -44,39 +43,39 @@ export async function POST(
     );
   }
 
-  // 2. check if the user already exist
-  // 2.a compare the username with the database
+  // 2. check if the user exist
+  const userWithPasswordHash = await getUserByUsernameWithPasswordHash(
+    result.data.username,
+  );
 
-  const user = await getUserByUsername(result.data.username);
-
-  if (user) {
+  if (!userWithPasswordHash) {
+    // consider using the same output for user or password not valid
     return NextResponse.json(
-      { errors: [{ message: 'username is already taken' }] },
-      { status: 400 },
+      { errors: [{ message: 'user not found' }] },
+      { status: 401 },
     );
   }
 
-  // 3. hash the password
-  const passwordHash = await bcrypt.hash(result.data.password, 12);
+  // 3. validate the password
+  const isPasswordValid = await bcrypt.compare(
+    result.data.password,
+    userWithPasswordHash.passwordHash,
+  ); // Boolean
 
-  // 4. create the user
-  const newUser = await createUser(result.data.username, passwordHash);
-
-  if (!newUser) {
+  if (!isPasswordValid) {
+    // consider using the same output for user or password not valid
     return NextResponse.json(
-      { errors: [{ message: 'user creation failed' }] },
-      { status: 500 },
+      { errors: [{ message: 'password is not valid' }] },
+      { status: 401 },
     );
   }
 
-  // 5. create a session (in the next chapter)
+  // 4. create a session (in the next chapter)
   // - create the token
   const token = crypto.randomBytes(80).toString('base64');
 
-  const csrfSecret = createCsrfSecret();
-
   // - create the session
-  const session = await createSession(token, newUser.id, csrfSecret);
+  const session = await createSession(token, userWithPasswordHash.id);
 
   if (!session) {
     return NextResponse.json(
@@ -89,12 +88,15 @@ export async function POST(
     session.token,
   );
 
-  // 6. return the new username
+  // add the new header
+
   return NextResponse.json(
-    { user: { username: newUser.username } },
+    {
+      user: { username: userWithPasswordHash.username },
+    },
     {
       status: 200,
-      // - Attach the new cookie serialized to the header of the response
+      // - Attach the new cookie serialized to the header fo the response
       headers: { 'Set-Cookie': serializedCookie },
     },
   );
