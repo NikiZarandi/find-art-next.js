@@ -3,6 +3,7 @@ import { sql } from './connect';
 
 export type Art = {
   id: number;
+  imageUrl: string;
   name: string;
   description: string;
   categoryId: number;

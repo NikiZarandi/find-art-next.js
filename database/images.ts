@@ -1,11 +1,13 @@
 import { cache } from 'react';
+import { number } from 'zod';
 import { sql } from './connect';
 
 export type Image = {
   id: number;
+  artsId: number;
+  userId: number;
   imageUrl: string;
   caption: string;
-  userId: number;
 };
 
 // get all images
@@ -47,12 +49,12 @@ export const getImageById = cache(async (id: number) => {
 
 // create an image
 export const createImage = cache(
-  async (imageUrl: string, caption: string, userId: number) => {
+  async (artsId: number, userId: number, imageUrl: string, caption: string) => {
     const [image] = await sql<Image[]>`
   INSERT INTO images
-    (image_url, caption, user_id)
+    (arts_id, user_id, image_url, caption )
   VALUES
-    (${imageUrl}, ${caption}, ${userId})
+    (${artsId}, ${userId}, ${imageUrl}, ${caption} )
   RETURNING *
   `;
 

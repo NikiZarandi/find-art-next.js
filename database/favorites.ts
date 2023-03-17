@@ -3,8 +3,8 @@ import { sql } from './connect';
 
 export type Favorite = {
   id: number;
-  imageUrl: string;
   userId: number;
+  imageId: number;
 };
 
 // get all favorites for single user
@@ -35,7 +35,7 @@ export const getFavoriteByUserAndImage = cache(
     const [favorite] = await sql<Favorite[]>`
   SELECT
     user_id,
-    location_id
+    image_id
   FROM
     favorites
   WHERE
@@ -70,29 +70,29 @@ export const deleteFavoriteById = cache(async (id: number) => {
   return favorite;
 });
 
-export type FavoriteWithLocationInfo = {
+export type FavoriteWithImageInfo = {
   favoriteId: number;
-  imageId: number;
-
   userId: number;
+  imageId: number;
 };
 
-// export const getFavoriteByIdWithLocationInfo = cache(async (userId: number) => {
-//   const favoritesWithLocationInfo = await sql<FavoriteWithLocationInfo[]>`
-//   SELECT
-//     favorites.id AS favorite_id,
-//     locations.id AS location_id,
-//     locations.name AS location_name,
-//     locations.opening_hours AS location_opening_hours,
-//     users.id AS user_id
-//   FROM
-//     favorites
-//   INNER JOIN
-//     locations ON favorites.location_id = locations.id
-//   INNER JOIN
-//     users ON favorites.user_id = users.id
-//   WHERE
-//     favorites.user_id = ${userId}
-//   `;
-//   return favoritesWithLocationInfo;
-// });
+export const getFavoriteByIdWithImageInfo = cache(async (userId: number) => {
+  const FavoritesWithImageInfo = await sql<FavoriteWithImageInfo[]>`
+  SELECT
+    favorites.id AS favorite_id,
+    users.id AS user_id,
+    images.id AS image_id,
+    images.name AS image_name
+
+
+  FROM
+    favorites
+  INNER JOIN
+    images ON favorites.image_id = images.id
+  INNER JOIN
+    users ON favorites.user_id = users.id
+  WHERE
+    favorites.user_id = ${userId}
+  `;
+  return FavoritesWithImageInfo;
+});

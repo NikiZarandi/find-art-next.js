@@ -1,4 +1,5 @@
 import { getArts } from '@/database/arts';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
@@ -22,6 +23,12 @@ export default async function ArtsPage() {
 
               <h2>{art.description}</h2>
               <h2>{art.categoryId}</h2>
+              <Image
+                src={art.imageUrl}
+                alt={art.name}
+                height={200}
+                width={200}
+              />
             </div>
           );
         })}

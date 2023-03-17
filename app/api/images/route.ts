@@ -1,13 +1,14 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-import { z } from 'zod';
+import { number, z } from 'zod';
 import { createImage, Image } from '../../../database/images';
 import { getUserBySessionToken } from '../../../database/users';
 
 const imageType = z.object({
+  userId: z.number(),
   imageUrl: z.string(),
   caption: z.string(),
-  // userId: z.number(),
+  artsId: z.number(),
 });
 
 export type ImagesResponseBodyPost =
@@ -38,16 +39,17 @@ export async function POST(
     return NextResponse.json(
       {
         error:
-          'Request body is missing one of the needed propterites caption & image url',
+          'Request body is missing one of the needed properties caption & image url',
       },
       { status: 400 },
     );
   }
 
   const newImage = await createImage(
+    result.data.artsId,
+    user.id,
     result.data.imageUrl,
     result.data.caption,
-    user.id,
   );
 
   if (!newImage) {

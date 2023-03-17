@@ -18,6 +18,8 @@
 //     </>
 //   );
 // }
+
+// import ArtsPage from '@/app/arts/page';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -48,7 +50,7 @@ export default async function UserProfile({ params }: Props) {
   if (!currentUser) {
     return (
       NextResponse.json({ error: 'session token is not valid' }),
-      redirect(`/login?returnTo=/locations`)
+      redirect(`/login?returnTo=/images`)
     );
   }
 
@@ -58,31 +60,29 @@ export default async function UserProfile({ params }: Props) {
     notFound();
   }
 
-  // const favorites = await getFavoriteByIdWithLocationInfo(user.id);
+  // const favorites = await getFavoriteByImageId(user.id);
   const images = await getImagesByUserId(user.id);
 
   return (
-    <main className="flex flex-col items-center">
+    <main>
       <h1>
         <b>{user.username}</b>
       </h1>
       {/* <p>id: {user.id}</p> */}
       <Link href={`/profile/${user.username}/userfavorites`}>
-        <b>SEE MY FAVORITES</b>
+        <b>MY FAVORITES</b>
       </Link>
       {currentUser.id === user.id ? (
-        <AddImage images={images} userId={user.id} />
+        // <AddImage user={user} images={images} />
+        <AddImage userId={user.id} images={images} />
       ) : (
         ''
       )}
       <span>
         {images.map((image) => {
           return (
-            <div
-              key={`user-${image.userId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <figure className="px-10 pt-10">
+            <div key={`user-${image.userId}`}>
+              <figure>
                 <Image
                   src={`${image.imageUrl}`}
                   alt="user generated image"
@@ -90,44 +90,16 @@ export default async function UserProfile({ params }: Props) {
                   height="200"
                 />
               </figure>
-              <div className="card-body items-center text-center">
+              <div>
                 <p>{image.caption}</p>
               </div>
-              <div className="mb-2 -mt-5">
+              <div>
                 <RemoveImage image={image} />
               </div>
             </div>
           );
         })}
       </span>
-      {/* <span>
-        {favorites.map((favorite) => {
-          return (
-            <div
-              key={`location-${favorite.locationId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <Link href={`/locations/${favorite.locationId}`}>
-                <figure className="px-10 pt-10">
-                  <Image
-                    src={`/images/${favorite.locationId}.jpg`}
-                    alt="location image"
-                    width="200"
-                    height="200"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h3 className="card-title">{favorite.locationName}</h3>
-                  <p>{favorite.locationOpeningHours}</p>
-                </div>
-              </Link>
-              <div className="mb-2 -mt-5">
-                <RemoveFavorite favorite={favorite} />
-              </div>
-            </div>
-          );
-        })}
-      </span> */}
     </main>
   );
 }

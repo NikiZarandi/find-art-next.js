@@ -8,6 +8,14 @@ type Props = {
   images: Image[];
   // imageUrl: string;
   userId: number;
+  // caption: string;
+  // artId: number;
+  // user: {
+  //   id: number;
+  // };
+  // art: {
+  //   id: number;
+  // };
 };
 
 export default function AddImage(props: Props) {
@@ -98,6 +106,8 @@ export default function AddImage(props: Props) {
                   body: JSON.stringify({
                     imageUrl,
                     caption,
+                    // artId: props.art.id,
+                    // userId: props.user.id,
                   }),
                 });
                 const data = await response.json();

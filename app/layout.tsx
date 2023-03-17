@@ -58,7 +58,9 @@ export default async function RootLayout(props: Props) {
 
               {/* <Link href="/arts/paginated">paginated</Link> */}
               <div>
-                <Link href={`/profile/${user.username}`}>{user.username}</Link>
+                <Link href={`/profile/${user?.username}`}>
+                  {user?.username}
+                </Link>
                 {user ? (
                   <Link href="/logout" prefetch={false}>
                     logout

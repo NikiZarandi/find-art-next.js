@@ -1,10 +1,10 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FavoriteWithLocationInfo } from '../../../../database/favorites';
+import { FavoriteWithImageInfo } from '../../../../database/favorites';
 
 type Props = {
-  favorite: FavoriteWithLocationInfo;
+  favorite: FavoriteWithImageInfo;
 };
 
 export default function RemoveFavorite(props: Props) {
@@ -20,7 +20,7 @@ export default function RemoveFavorite(props: Props) {
       <div key={`favorite-${props.favorite.favoriteId}`}>
         <button
           onClick={async () => {
-            // const locationId = props.locationId;
+            // const imageId = props.imageId;
 
             const response = await fetch(
               `/api/favorites/${props.favorite.favoriteId}`,

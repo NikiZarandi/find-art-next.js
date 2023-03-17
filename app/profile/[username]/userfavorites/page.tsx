@@ -1,7 +1,7 @@
+import { getFavoriteByIdWithImageInfo } from '@/database/favorites';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getFavoriteByIdWithLocationInfo } from '../../../../database/favorites';
 import { getUserByUsername } from '../../../../database/users';
 import RemoveFavorite from './RemoveFavorites';
 
@@ -16,10 +16,10 @@ export default async function UserFavoritse({ params }: Props) {
     notFound();
   }
 
-  const favorites = await getFavoriteByIdWithLocationInfo(user.id);
+  const favorites = await getFavoriteByIdWithImageInfo(user.id);
 
   return (
-    <main className="flex flex-col items-center">
+    <main>
       <h1>
         <b>MY FAVORITES:</b>
       </h1>
@@ -27,22 +27,18 @@ export default async function UserFavoritse({ params }: Props) {
       <span>
         {favorites.map((favorite) => {
           return (
-            <div
-              key={`location-${favorite.imageId}`}
-              className="card w-96 bg-base-100 shadow-xl my-2 items-center"
-            >
-              <Link href={`/locations/${favorite.imageId}`}>
-                <figure className="px-10 pt-10">
+            <div key={`image-${favorite.imageId}`}>
+              <Link href={`/images/${favorite.imageId}`}>
+                <figure>
                   <Image
                     src={`/images/${favorite.imageId}.jpg`}
-                    alt="location image"
+                    alt="arts image"
                     width="200"
                     height="200"
                   />
                 </figure>
-                <div className="card-body items-center text-center"></div>
               </Link>
-              <div className="mb-2 -mt-5">
+              <div>
                 <RemoveFavorite favorite={favorite} />
               </div>
             </div>
