@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Image } from '../../../database/images';
+import { Art } from '../../../database/arts';
 
 type Props = {
-  images: Image[];
+  arts: Art[];
   // imageUrl: string;
   userId: number;
   // caption: string;
@@ -18,9 +18,10 @@ type Props = {
   // };
 };
 
-export default function AddImage(props: Props) {
-  const [images, setImages] = useState<Image[]>(props.images);
-  const [caption, setCaption] = useState<string>('');
+export default function AddArt(props: Props) {
+  const [arts, setArts] = useState<Art[]>(props.arts);
+  const [description, setDescription] = useState<string>('');
+  const [name, setName] = useState<string>('');
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<string>();
@@ -88,8 +89,8 @@ export default function AddImage(props: Props) {
 
           <label htmlFor="caption">Caption</label>
           <input
-            value={caption}
-            onChange={(event) => setCaption(event.currentTarget.value)}
+            value={description}
+            onChange={(event) => setDescription(event.currentTarget.value)}
           />
           <div className="card-actions justify-end">
             <button
@@ -105,8 +106,9 @@ export default function AddImage(props: Props) {
                   },
                   body: JSON.stringify({
                     imageUrl,
-                    caption,
-                    // artId: props.art.id,
+                    description: description,
+                    name: name,
+                    // categoriesId: props.art.categiresId,
                     // userId: props.user.id,
                   }),
                 });
@@ -118,7 +120,7 @@ export default function AddImage(props: Props) {
                 }
 
                 // router.replace(`/profile/${username}`);
-                setImages([...images, data.image]);
+                setArts([...arts, data.image]);
                 router.refresh();
               }}
             >

@@ -22,7 +22,7 @@ export default async function ArtsPage() {
               <Link href={`/arts/${art.id}`}>{art.name}</Link>
 
               <h2>{art.description}</h2>
-              <h2>{art.categoryId}</h2>
+              <h2>{art.categoriesId}</h2>
               <Image
                 src={art.imageUrl}
                 alt={art.name}

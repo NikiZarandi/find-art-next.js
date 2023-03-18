@@ -3,13 +3,14 @@ import { sql } from './connect';
 
 export type Art = {
   id: number;
-  imageUrl: string;
   name: string;
+  imageUrl: string;
   description: string;
-  categoryId: number;
+  userId: number;
+  categoriesId: number;
 };
 
-// get all arts
+// get all images
 export const getArts = cache(async () => {
   const arts = await sql<Art[]>`
     SELECT * FROM arts
@@ -18,19 +19,6 @@ export const getArts = cache(async () => {
   return arts;
 });
 
-export const getArtsWithLimitAndOffset = cache(
-  async (limit: number, offset: number) => {
-    const arts = await sql<Art[]>`
-    SELECT * FROM arts
-    Limit ${limit}
-    offset ${offset}
-  `;
-
-    return arts;
-  },
-);
-
-// get a single art
 export const getArtById = cache(async (id: number) => {
   const [art] = await sql<Art[]>`
     SELECT
@@ -43,7 +31,6 @@ export const getArtById = cache(async (id: number) => {
   return art;
 });
 
-// get a single art only if i have a valid session token
 export const getArtByIdAndSessionToken = cache(
   async (id: number, token: string) => {
     const [art] = await sql<Art[]>`
@@ -63,17 +50,26 @@ export const getArtByIdAndSessionToken = cache(
   },
 );
 
-export const createArt = cache(async (name: string, token: string) => {
+export async function createArt(
+  name: string,
+  imageUrl: string,
+  description: string,
+  userId: number,
+  categoriesId: number,
+) {
   const [art] = await sql<Art[]>`
-      INSERT INTO arts
-        (name)
-      VALUES
-        (${name})
-      RETURNING *
-    `;
+    INSERT INTO arts
+      ( name,
+       image_url,
+       description,
+       user_id,
+       categories_id)
+    VALUES
+      (${name},${imageUrl}, ${description}, ${userId},${categoriesId})
+    RETURNING *
+  `;
   return art;
-});
-
+}
 export const updateArtById = cache(async (id: number, name: string) => {
   const [art] = await sql<Art[]>`
       UPDATE
@@ -86,7 +82,6 @@ export const updateArtById = cache(async (id: number, name: string) => {
     `;
   return art;
 });
-
 export const deleteArtById = cache(async (id: number) => {
   const [art] = await sql<Art[]>`
     DELETE FROM
@@ -97,3 +92,58 @@ export const deleteArtById = cache(async (id: number) => {
   `;
   return art;
 });
+// get images for single user
+export const getArtssByUserId = cache(async (userId: number) => {
+  const arts = await sql<Art[]>`
+  SELECT
+    *
+  FROM
+    arts
+  WHERE
+    arts.user_id = ${userId}
+  `;
+
+  return arts;
+});
+
+// get single image by id
+export const getImageById = cache(async (id: number) => {
+  const [art] = await sql<Art[]>`
+  SELECT
+   *
+  FROM
+    arts
+  WHERE
+    id = ${id}
+  `;
+
+  return art;
+});
+
+// create an image
+// export const createImage = cache(
+//   async (artsId: number, userId: number, imageUrl: string, caption: string) => {
+//     const [image] = await sql<Image[]>`
+//   INSERT INTO images
+//     (arts_id, user_id, image_url, caption )
+//   VALUES
+//     (${artsId}, ${userId}, ${imageUrl}, ${caption} )
+//   RETURNING *
+//   `;
+
+//     return image;
+//   },
+// );
+
+// delete image by
+// export const deleteImageById = cache(async (id: number) => {
+//   const [image] = await sql<Image[]>`
+//   DELETE FROM
+//     images
+//   WHERE
+//     id = ${id}
+//   RETURNING *
+//   `;
+
+//   return image;
+// });

@@ -4,14 +4,14 @@ import { sql } from './connect';
 export type Comment = {
   id: number;
   content: string;
-  locationId: number;
+  imageId: number;
   userId: number;
 };
 
 export type CommentWithUsername = {
   id: number;
   content: string;
-  locationId: number;
+  imageId: number;
   userId: number;
   userName: string;
 };

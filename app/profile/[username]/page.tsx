@@ -20,21 +20,23 @@
 // }
 
 // import ArtsPage from '@/app/arts/page';
+import { Art } from '@/database/arts';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
-import { getImagesByUserId } from '../../../database/images';
+import { getArtssByUserId } from '../../../database/arts';
 import {
   getUserBySessionToken,
   getUserByUsername,
 } from '../../../database/users';
-import RemoveImage from '../RemoveImage';
-import AddImage from './AddImage';
+import RemoveArt from '../RemoveArt';
+import AddArt from './AddArt';
 
 type Props = {
   params: { username: string };
+  art: Art;
 };
 
 export default async function UserProfile({ params }: Props) {
@@ -50,7 +52,7 @@ export default async function UserProfile({ params }: Props) {
   if (!currentUser) {
     return (
       NextResponse.json({ error: 'session token is not valid' }),
-      redirect(`/login?returnTo=/images`)
+      redirect(`/login?returnTo=/arts`)
     );
   }
 
@@ -61,7 +63,7 @@ export default async function UserProfile({ params }: Props) {
   }
 
   // const favorites = await getFavoriteByImageId(user.id);
-  const images = await getImagesByUserId(user.id);
+  const arts = await getArtssByUserId(user.id);
 
   return (
     <main>
@@ -74,27 +76,27 @@ export default async function UserProfile({ params }: Props) {
       </Link>
       {currentUser.id === user.id ? (
         // <AddImage user={user} images={images} />
-        <AddImage userId={user.id} images={images} />
+        <AddArt userId={user.id} arts={arts} />
       ) : (
         ''
       )}
       <span>
-        {images.map((image) => {
+        {arts.map((art) => {
           return (
-            <div key={`user-${image.userId}`}>
-              <figure>
+            <div key={`user-${art.userId}`}>
+              <div>
                 <Image
-                  src={`${image.imageUrl}`}
+                  src={`${art.imageUrl}`}
                   alt="user generated image"
                   width="200"
                   height="200"
                 />
-              </figure>
-              <div>
-                <p>{image.caption}</p>
               </div>
               <div>
-                <RemoveImage image={image} />
+                <p>{art.description}</p>
+              </div>
+              <div>
+                <RemoveArt art={art} />
               </div>
             </div>
           );

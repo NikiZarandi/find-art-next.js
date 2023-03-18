@@ -1,27 +1,28 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { number, z } from 'zod';
-import { createImage, Image } from '../../../database/images';
+import { Art, createArt } from '../../../database/arts';
 import { getUserBySessionToken } from '../../../database/users';
 
-const imageType = z.object({
-  userId: z.number(),
+const artType = z.object({
+  name: z.string(),
   imageUrl: z.string(),
-  caption: z.string(),
-  artsId: z.number(),
+  description: z.string(),
+  userId: z.number(),
+  categoriesId: z.number(),
 });
 
-export type ImagesResponseBodyPost =
+export type ArtsResponseBodyPost =
   | {
       error: string;
     }
   | {
-      image: Image;
+      art: Art;
     };
 
 export async function POST(
   request: NextRequest,
-): Promise<NextResponse<ImagesResponseBodyPost>> {
+): Promise<NextResponse<ArtsResponseBodyPost>> {
   const cookieStore = cookies();
   const token = cookieStore.get('sessionToken');
   const user = token && (await getUserBySessionToken(token.value));
@@ -31,7 +32,7 @@ export async function POST(
   }
 
   const body = await request.json();
-  const result = imageType.safeParse(body);
+  const result = artType.safeParse(body);
 
   if (!result.success) {
     console.log(result.error.issues);
@@ -45,15 +46,16 @@ export async function POST(
     );
   }
 
-  const newImage = await createImage(
-    result.data.artsId,
-    user.id,
-    result.data.imageUrl,
-    result.data.caption,
+  const newArt = await createArt(
+    body.name,
+    body.imageUrl,
+    body.description,
+    body.userId,
+    body.categoriesId,
   );
 
-  if (!newImage) {
-    return NextResponse.json({ error: 'Image not created!' }, { status: 500 });
+  if (!newArt) {
+    return NextResponse.json({ error: 'art not created!' }, { status: 500 });
   }
-  return NextResponse.json({ image: newImage });
+  return NextResponse.json({ art: newArt });
 }

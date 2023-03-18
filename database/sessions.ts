@@ -4,7 +4,7 @@ import { sql } from './connect';
 type Session = {
   id: number;
   token: string;
-  csrfSecret: string;
+  // csrfSecret: string;
 };
 
 export const createSession = cache(async (token: string, userId: number) => {

@@ -10,7 +10,7 @@ type Props = {
     artId: string;
     name: string;
     description: string;
-    categoryId: string;
+    categoryId: number;
   };
 };
 
@@ -29,7 +29,7 @@ export default async function ArtPage(props: Props) {
       {/* This is a {singleProduct.type} */}
       <h1>{singleArt.name}</h1>
       <h1>{singleArt.description}</h1>
-      <h1>{singleArt.categoryId}</h1>
+      <h1>{singleArt.categoriesId}</h1>
       <br />
       <br />
       <br />

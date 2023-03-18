@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Image } from '../../../database/images';
+import { Image } from '../../../database/arts';
 
 type Props = {
   images: Image[];

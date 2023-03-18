@@ -1,61 +1,59 @@
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
-// import { z } from 'zod';
-import {
-  deleteImageById,
-  getImageById,
-  Image,
-} from '../../../../database/images';
+import { z } from 'zod';
+import { Art, deleteArtById, getArtById } from '../../../../database/arts';
 import { getUserBySessionToken } from '../../../../database/users';
 
-// const imageType = z.object({
-//   imageUrl: z.string(),
-//   caption: z.string(),
-//   userId: z.number(),
-// });
+const artType = z.object({
+  name: z.number(),
+  imageUrl: z.string(),
+  description: z.string(),
+  userId: z.number(),
+  categoriesId: z.number(),
+});
 
-export type ImageResponseBodyGet =
+export type ArtResponseBodyGet =
   | {
       error: string;
     }
   | {
-      image: Image;
+      art: Art;
     };
 
-export type ImageResponseBodyDelete =
+export type ArtResponseBodyDelete =
   | {
       error: string;
     }
   | {
-      image: Image;
+      art: Art;
     };
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Record<string, string | string[]> },
-): Promise<NextResponse<ImageResponseBodyGet>> {
-  const imageId = Number(params.imageId);
+): Promise<NextResponse<ArtResponseBodyGet>> {
+  const artId = Number(params.artId);
 
-  if (!imageId) {
+  if (!artId) {
     return NextResponse.json(
       { error: 'Image id is not valid' },
       { status: 400 },
     );
   }
 
-  const singleImage = await getImageById(imageId);
+  const singleArt = await getArtById(artId);
 
-  if (!singleImage) {
+  if (!singleArt) {
     return NextResponse.json({ error: 'Image not found' }, { status: 400 });
   }
 
-  return NextResponse.json({ image: singleImage });
+  return NextResponse.json({ art: singleArt });
 }
 
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Record<string, string | string[]> },
-): Promise<NextResponse<ImageResponseBodyDelete>> {
+): Promise<NextResponse<ArtResponseBodyDelete>> {
   // this is a protected Route Handler
   // 1. get the session token from the cookie
   const cookieStore = cookies();
@@ -69,10 +67,10 @@ export async function DELETE(
     return NextResponse.json({ error: 'session token is not valid' });
   }
 
-  const imageId = Number(params.imageId);
-  const singleImageCheck = await getImageById(imageId);
+  const artId = Number(params.artId);
+  const singleArtCheck = await getArtById(artId);
 
-  if (!imageId) {
+  if (!artId) {
     return NextResponse.json(
       {
         error: 'Image id is not valid',
@@ -81,10 +79,10 @@ export async function DELETE(
     );
   }
 
-  if (singleImageCheck && singleImageCheck.userId === user.id) {
-    const oneImage = await deleteImageById(imageId);
+  if (singleArtCheck && singleArtCheck.userId === user.id) {
+    const oneArt = await deleteArtById(artId);
 
-    if (!oneImage) {
+    if (!oneArt) {
       return NextResponse.json(
         {
           error: 'Image not found',
@@ -93,10 +91,10 @@ export async function DELETE(
       );
     }
 
-    return NextResponse.json({ image: oneImage });
+    return NextResponse.json({ art: oneArt });
   } else {
     return NextResponse.json(
-      { error: 'You cannot delete this image!' },
+      { error: 'You cannot delete this art!' },
       { status: 403 },
     );
   }

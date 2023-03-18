@@ -1,13 +1,13 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Image } from '../../database/images';
+import { Art } from '../../database/arts';
 
 type Props = {
-  image: Image;
+  art: Art;
 };
 
-export default function RemoveImage(props: Props) {
+export default function RemoveArt(props: Props) {
   const [error, setError] = useState<string>();
 
   const router = useRouter();
@@ -16,12 +16,12 @@ export default function RemoveImage(props: Props) {
     <main>
       {typeof error === 'string' && <div style={{ color: 'red' }}>{error}</div>}
 
-      <div key={`image-${props.image.id}`}>
+      <div key={`art-${props.art.id}`}>
         <button
           onClick={async () => {
             // const locationId = props.locationId;
 
-            const response = await fetch(`/api/images/${props.image.id}`, {
+            const response = await fetch(`/api/arts/${props.art.id}`, {
               method: 'DELETE',
             });
 
