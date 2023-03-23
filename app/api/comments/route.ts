@@ -6,8 +6,8 @@ import { getUserBySessionToken } from '../../../database/users';
 
 const commentType = z.object({
   content: z.string(),
-  locationId: z.number(),
-  // userId: z.number(),
+  imageId: z.number(),
+  userId: z.number(),
   userName: z.string(),
 });
 
@@ -46,7 +46,7 @@ export async function POST(
 
   const newComment = await createComment(
     result.data.content,
-    result.data.locationId,
+    result.data.imageId,
     user.id,
     result.data.userName,
   );

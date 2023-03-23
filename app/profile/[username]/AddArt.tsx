@@ -6,22 +6,21 @@ import { Art } from '../../../database/arts';
 
 type Props = {
   arts: Art[];
-  // imageUrl: string;
+  imageUrl: string;
   userId: number;
-  // caption: string;
-  // artId: number;
-  // user: {
-  //   id: number;
-  // };
-  // art: {
-  //   id: number;
-  // };
+  description: string;
+  artId: number;
+  categoriesId: string;
+  user: {
+    id: number;
+  };
 };
 
 export default function AddArt(props: Props) {
   const [arts, setArts] = useState<Art[]>(props.arts);
   const [description, setDescription] = useState<string>('');
   const [name, setName] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<string>();
@@ -63,13 +62,14 @@ export default function AddArt(props: Props) {
     ).then((r) => r.json());
 
     setImageSrc(data.secure_url);
+    console.log(data.secure_url);
     setUploadData(data);
   }
 
   return (
     <main>
       <div>
-        <div className="card-body">
+        <div>
           <h1>Share your arts and designs!</h1>
           <p>{error}</p>
           <form method="post" onSubmit={handleOnSubmit}>
@@ -82,34 +82,43 @@ export default function AddArt(props: Props) {
             <figure>
               <img src={imageSrc} alt="User" />
             </figure>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Upload</button>
+            <div>
+              <button>Upload</button>
             </div>
           </form>
 
-          <label htmlFor="caption">Caption</label>
+          <label htmlFor="caption">description</label>
           <input
             value={description}
             onChange={(event) => setDescription(event.currentTarget.value)}
           />
-          <div className="card-actions justify-end">
+          <label htmlFor="caption">name</label>
+          <input
+            value={name}
+            onChange={(event) => setName(event.currentTarget.value)}
+          />
+          <label htmlFor="caption">category</label>
+          <input
+            value={category}
+            onChange={(event) => setCategory(event.currentTarget.value)}
+          />
+          <div>
             <button
-              className="btn btn-primary"
               onClick={async (event) => {
                 // const userId = props.userId;
                 const imageUrl = imageSrc;
                 event.preventDefault();
-                const response = await fetch('/api/images', {
+                const response = await fetch('/api/arts', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
-                    imageUrl,
-                    description: description,
                     name: name,
-                    // categoriesId: props.art.categiresId,
-                    // userId: props.user.id,
+                    imageUrl: imageSrc,
+                    description: description,
+                    userId: props.userId,
+                    categoriesId: category,
                   }),
                 });
                 const data = await response.json();
@@ -120,11 +129,11 @@ export default function AddArt(props: Props) {
                 }
 
                 // router.replace(`/profile/${username}`);
-                setArts([...arts, data.image]);
+                setArts([...arts, data.art]);
                 router.refresh();
               }}
             >
-              Post image
+              create
             </button>
           </div>
           {typeof error === 'string' && (

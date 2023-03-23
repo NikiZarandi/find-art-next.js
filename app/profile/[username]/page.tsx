@@ -85,6 +85,7 @@ export default async function UserProfile({ params }: Props) {
           return (
             <div key={`user-${art.userId}`}>
               <div>
+                {`${art.imageUrl}`}
                 <Image
                   src={`${art.imageUrl}`}
                   alt="user generated image"

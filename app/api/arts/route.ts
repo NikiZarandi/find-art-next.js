@@ -9,7 +9,7 @@ const artType = z.object({
   imageUrl: z.string(),
   description: z.string(),
   userId: z.number(),
-  categoriesId: z.number(),
+  categoriesId: z.string(),
 });
 
 export type ArtsResponseBodyPost =
@@ -51,7 +51,7 @@ export async function POST(
     body.imageUrl,
     body.description,
     body.userId,
-    body.categoriesId,
+    body.category,
   );
 
   if (!newArt) {
