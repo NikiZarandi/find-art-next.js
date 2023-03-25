@@ -48,21 +48,28 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
           <div className={styles.findart}>
             <h1>FIND ART</h1>
           </div>
-          <label className={styles.username}>
-            username:
+          <h3 className={styles.h3}>Register</h3>
+          <label className={styles.password}>
+            username
             <input
+              className={styles.color}
               value={username}
               onChange={(event) => setUsername(event.currentTarget.value)}
             />
           </label>
           <label className={styles.password}>
-            password:
+            password
             <input
+              className={styles.color}
               value={password}
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
           </label>
-          <button className={styles.button}>Register</button>
+          <div>
+            <div className={styles.mitte}>
+              <button className={styles.button}>Register</button>
+            </div>
+          </div>
         </div>
       </div>
     </form>

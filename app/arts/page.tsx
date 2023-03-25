@@ -2,6 +2,7 @@ import { getArts } from '@/database/arts';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Arts',
@@ -14,7 +15,7 @@ export default async function ArtsPage() {
     <div>
       {/* <h1 className={styles.h1}>Products</h1> */}
 
-      <main>
+      <main className={styles.divElementzeri}>
         {arts.map((art) => {
           console.log(arts);
           return (
@@ -22,13 +23,16 @@ export default async function ArtsPage() {
               <Link href={`/arts/${art.id}`}>{art.name}</Link>
 
               <h2>{art.description}</h2>
-              <h2>{art.categoriesId}</h2>
-              <Image
-                src={art.imageUrl}
-                alt={art.name}
-                height={200}
-                width={200}
-              />
+
+              <div>
+                <h2>{art.categoriesId}</h2>
+                <Image
+                  src={art.imageUrl}
+                  alt={art.name}
+                  height={200}
+                  width={200}
+                />
+              </div>
             </div>
           );
         })}
@@ -36,3 +40,6 @@ export default async function ArtsPage() {
     </div>
   );
 }
+<div class="gallery-container">
+  {/* <!-- gallery items will be added here --> */}
+</div>;

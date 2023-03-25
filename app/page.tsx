@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <main className={styles.main}>
       <div>
-        <h1 className={styles.text}>Find Art</h1>
+        <h1 className={styles.text}>FIND ART</h1>
       </div>
       <div>
         <div className={styles.fis}>
@@ -103,6 +103,7 @@ export default function HomePage() {
         and concerns are important to us. We want to inspire you with our design
         ideas.
       </div>
+
       <br />
 
       <br />
@@ -138,6 +139,16 @@ export default function HomePage() {
           mak gallery london art gallery exhibitions museum of modern Art
         </div>
       </div>
+
+      {/* <ul className={styles.ul}>
+        <li>F</li>
+        <li>I</li>
+        <li>N</li>
+        <li>D</li>
+        <li>A</li>
+        <li>R</li>
+        <li>T</li>
+      </ul> */}
     </main>
   );
 }

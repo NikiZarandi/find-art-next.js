@@ -1,25 +1,28 @@
 .registerform {
   display: grid;
-
+  font-family: Arial, Helvetica, sans-serif;
   justify-content: center;
   align-items: center;
   text-decoration: solid;
 
-  padding: 330px;
-  background-image: url('/images/firstpage/fin9.png');
-  padding-left: 0%;
-  background-size: cover;
-  background-position: center center;
+  padding: 20px;
+
+  // background-image: url('/images/logo/background.jpeg');
+  // padding-left: 0%;
+  // background-size: cover;
+  // background-position: center center;
 
   border-radius: 10%;
 }
-.username {
-  text-decoration-color: white;
-  margin-bottom: 6%;
+.color {
+  margin-bottom: 10%;
+  color: rgb(19, 16, 16);
+  width: 300px;
 }
+
 .password {
   margin-bottom: 10%;
-  text-decoration-color: white;
+  color: rgb(255, 255, 255);
   width: 300px;
 }
 .input {
@@ -32,18 +35,56 @@
 .text {
   height: 30px;
   width: 200px;
-
-  color: rgb(14, 12, 14);
 }
 
 .button {
-  height: 20px;
-  width: 235px;
-  background-color: rgb(1, 1, 4);
-  color: rgb(255, 255, 255);
-  height: 20px;
-  width: 235px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(12, 3, 3);
+  height: 45px;
+  width: 187px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid rgb(146, 148, 248);
+  position: relative;
+  overflow: hidden;
 }
+.button:hover {
+  box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
+  color: #fcfcfc;
+}
+
 .findart {
-  text-size-adjust: 40%;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  color: rgb(255, 255, 255);
+}
+.mitte {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+.h3 {
+  margin-top: 20%;
+  margin-bottom: 10%;
+  color: rgb(255, 255, 255);
+}
+.input {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

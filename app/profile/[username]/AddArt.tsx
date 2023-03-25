@@ -3,17 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Art } from '../../../database/arts';
+import styles from './profilepage.module.scss';
 
 type Props = {
   arts: Art[];
-  imageUrl: string;
   userId: number;
-  description: string;
-  artId: number;
-  categoriesId: string;
-  user: {
-    id: number;
-  };
 };
 
 export default function AddArt(props: Props) {
@@ -23,10 +17,12 @@ export default function AddArt(props: Props) {
   const [category, setCategory] = useState<string>('');
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
-  const [error, setError] = useState<string>();
+  const [error, setError] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
+    const files = changeEvent.target.files!;
+
     const reader = new FileReader();
 
     reader.onload = function (onLoadEvent: ProgressEvent<FileReader>) {
@@ -34,16 +30,21 @@ export default function AddArt(props: Props) {
       setUploadData(undefined);
     };
 
-    reader.readAsDataURL(changeEvent.target.files[0]);
+    reader.readAsDataURL(files[0]!);
   }
 
   async function handleOnSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
+    const fileInput = (Array.from(form.elements) as HTMLInputElement[]).find(
       ({ name }) => name === 'file',
-    ) as HTMLInputElement;
+    );
+
+    if (!fileInput) {
+      setError([{ message: 'No file found!' }]);
+      return;
+    }
 
     const formData = new FormData();
 
@@ -62,7 +63,7 @@ export default function AddArt(props: Props) {
     ).then((r) => r.json());
 
     setImageSrc(data.secure_url);
-    console.log(data.secure_url);
+    // console.log(data.secure_url);
     setUploadData(data);
   }
 
@@ -70,11 +71,13 @@ export default function AddArt(props: Props) {
     <main>
       <div>
         <div>
-          <h1>Share your arts and designs!</h1>
-          <p>{error}</p>
+          <h1 className={styles.h1}>SHARE YOUR ARTS & DESIGNS!</h1>
+          {/* <p>{error}</p> */}
           <form method="post" onSubmit={handleOnSubmit}>
             <label>
               Upload your image here:
+              <br />
+              <br />
               <br />
               <input onChange={handleOnChange} type="file" name="file" />
             </label>
@@ -83,27 +86,40 @@ export default function AddArt(props: Props) {
               <img src={imageSrc} alt="User" />
             </figure>
             <div>
-              <button>Upload</button>
+              <button className={styles.uploud}>Upload</button>
             </div>
           </form>
 
-          <label htmlFor="caption">description</label>
+          <label className={styles.main} htmlFor="caption">
+            description
+          </label>
+          <br />
+          <br />
           <input
             value={description}
             onChange={(event) => setDescription(event.currentTarget.value)}
           />
+          <br />
+          <br />
           <label htmlFor="caption">name</label>
+          <br />
+          <br />
           <input
             value={name}
             onChange={(event) => setName(event.currentTarget.value)}
           />
+          <br />
+          <br />
           <label htmlFor="caption">category</label>
+          <br />
+          <br />
           <input
             value={category}
             onChange={(event) => setCategory(event.currentTarget.value)}
           />
           <div>
             <button
+              className={styles.create}
               onClick={async (event) => {
                 // const userId = props.userId;
                 const imageUrl = imageSrc;

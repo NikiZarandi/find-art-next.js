@@ -95,7 +95,7 @@ export default function AddImage(props: Props) {
           router.refresh();
         }}
       > */}
-      <label htmlFor="caption">Caption</label>
+      <label htmlFor="caption">description</label>
       <input
         value={caption}
         onChange={(event) => setCaption(event.currentTarget.value)}

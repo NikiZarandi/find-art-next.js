@@ -5,7 +5,7 @@ import { CommentWithUsername } from '../../../database/comments';
 
 type Props = {
   comments: CommentWithUsername[];
-  locationId: number;
+  imageId: number;
   userId: number;
   userName: string;
 };
@@ -30,9 +30,8 @@ export default function CommentForm(props: Props) {
         onChange={(event) => setContent(event.currentTarget.value)}
       />
       <button
-        className="btn btn-xs"
         onClick={async () => {
-          const locationId = props.locationId;
+          const locationId = props.imageId;
           const userName = props.userName;
           // const userId = props.userId;
           const response = await fetch('/api/comments', {
@@ -42,7 +41,7 @@ export default function CommentForm(props: Props) {
             },
             body: JSON.stringify({
               content,
-              locationId,
+              imageId,
               // userId,
               userName,
             }),
@@ -118,7 +117,6 @@ export default function CommentForm(props: Props) {
               {props.userId === comment.userId &&
               idOnEditMode !== comment.id ? (
                 <button
-                  className="btn btn-xs"
                   onClick={() => {
                     setIdOnEditMode(comment.id);
                     setEditContent(comment.content);
@@ -133,7 +131,6 @@ export default function CommentForm(props: Props) {
               {props.userId === comment.userId &&
               idOnEditMode === comment.id ? (
                 <button
-                  className="btn btn-xs"
                   onClick={async () => {
                     const response = await fetch(
                       `/api/comments/${comment.id}`,

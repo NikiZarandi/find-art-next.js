@@ -16,8 +16,8 @@ export type CommentWithUsername = {
   userName: string;
 };
 
-export const getCommentsForLocationWithUsername = cache(
-  async (locationId: number) => {
+export const getCommentsForImageWithUsername = cache(
+  async (imageId: number) => {
     const commentsWithUsername = await sql<CommentWithUsername[]>`
   SELECT
     *
@@ -26,17 +26,17 @@ export const getCommentsForLocationWithUsername = cache(
   INNER JOIN
     users ON comments.user_id = users.id
   WHERE
-    comments.location_id = ${locationId}
+    comments.image_id = ${imageId}
   `;
 
     return commentsWithUsername;
   },
 );
 
-// get all comments for single location
-export const getCommentsForLocation = cache(async (locationId: number) => {
+// get all comments for single image
+export const getCommentsForImage = cache(async (imageId: number) => {
   const comments = await sql<CommentWithUsername[]>`
-    SELECT * FROM comments WHERE comments.location_id = ${locationId}
+    SELECT * FROM comments WHERE comments.image_id = ${imageId}
   `;
 
   return comments;
@@ -58,15 +58,15 @@ export const getCommentById = cache(async (id: number) => {
 export const createComment = cache(
   async (
     content: string,
-    locationId: number,
+    imageId: number,
     userId: number,
     userName: string,
   ) => {
     const [comment] = await sql<CommentWithUsername[]>`
       INSERT INTO comments
-        (content, location_id, user_id, user_name)
+        (content, image_id, user_id, user_name)
       VALUES
-        (${content}, ${locationId}, ${userId}, ${userName})
+        (${content}, ${imageId}, ${userId}, ${userName})
       RETURNING *
     `;
     return comment;

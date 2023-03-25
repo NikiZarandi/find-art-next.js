@@ -7,7 +7,7 @@ export type Art = {
   imageUrl: string;
   description: string;
   userId: number;
-  categoriesId: string;
+  categoriesId: number;
 };
 
 // get all images
@@ -55,7 +55,7 @@ export async function createArt(
   imageUrl: string,
   description: string,
   userId: number,
-  categoriesId: string,
+  categoriesId: number,
 ) {
   const [art] = await sql<Art[]>`
     INSERT INTO arts
