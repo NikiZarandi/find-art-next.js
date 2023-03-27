@@ -1,6 +1,6 @@
 export async function up(sql) {
   await sql`
-    CREATE TABLE industrialdesigns (
+    CREATE TABLE jewelries (
       id integer PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
       name varchar(30) NOT NULL,
       image_url varchar(500),
@@ -13,6 +13,6 @@ export async function up(sql) {
 
 export async function down(sql) {
   await sql`
-    DROP TABLE industrialdesigns
+    DROP TABLE jewelries
   `;
 }

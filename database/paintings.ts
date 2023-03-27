@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { sql } from './connect';
 
-export type painting = {
+export type Painting = {
   id: number;
   name: string;
   imageUrl: string;
@@ -11,8 +11,8 @@ export type painting = {
 };
 
 // get all images
-export const paintings = cache(async () => {
-  const paintings = await sql<painting[]>`
+export const getPaintings = cache(async () => {
+  const paintings = await sql<Painting[]>`
     SELECT * FROM paintings
   `;
 
@@ -20,7 +20,7 @@ export const paintings = cache(async () => {
 });
 
 export const getPaintingById = cache(async (id: number) => {
-  const [painting] = await sql<painting[]>`
+  const [painting] = await sql<Painting[]>`
     SELECT
       *
     FROM
@@ -28,12 +28,12 @@ export const getPaintingById = cache(async (id: number) => {
     WHERE
       id = ${id}
   `;
-  return paintings;
+  return painting;
 });
 
 export const getPaintingByIdAndSessionToken = cache(
   async (id: number, token: string) => {
-    const [painting] = await sql<painting[]>`
+    const [painting] = await sql<Painting[]>`
     SELECT
       paintings.*
     FROM
@@ -46,7 +46,7 @@ export const getPaintingByIdAndSessionToken = cache(
     WHERE
       paintings.id = ${id}
   `;
-    return paintings;
+    return painting;
   },
 );
 
@@ -57,7 +57,7 @@ export async function createPainting(
   userId: number,
   categoriesId: number,
 ) {
-  const [art] = await sql<painting[]>`
+  const [art] = await sql<Painting[]>`
     INSERT INTO paintings
       ( name,
        image_url,
@@ -68,10 +68,10 @@ export async function createPainting(
       (${name},${imageUrl}, ${description}, ${userId},${categoriesId})
     RETURNING *
   `;
-  return paintings;
+  return art;
 }
-export const updateArtById = cache(async (id: number, name: string) => {
-  const [art] = await sql<painting[]>`
+export const updatePaintingById = cache(async (id: number, name: string) => {
+  const [painting] = await sql<Painting[]>`
       UPDATE
         paintings
       SET
@@ -80,21 +80,21 @@ export const updateArtById = cache(async (id: number, name: string) => {
         id = ${id}
       RETURNING *
     `;
-  return paintings;
+  return painting;
 });
-export const deleteArtById = cache(async (id: number) => {
-  const [art] = await sql<painting[]>`
+export const deletePaintingById = cache(async (id: number) => {
+  const [painting] = await sql<Painting[]>`
     DELETE FROM
       paintings
     WHERE
       id = ${id}
     RETURNING *
   `;
-  return paintings;
+  return painting;
 });
 // get images for single user
 export const getPaintingssByUserId = cache(async (userId: number) => {
-  const paintings = await sql<painting[]>`
+  const paintings = await sql<Painting[]>`
   SELECT
     *
   FROM
@@ -108,7 +108,7 @@ export const getPaintingssByUserId = cache(async (userId: number) => {
 
 // get single image by id
 export const getImageById = cache(async (id: number) => {
-  const [painting] = await sql<painting[]>`
+  const [painting] = await sql<Painting[]>`
   SELECT
    *
   FROM
@@ -119,31 +119,3 @@ export const getImageById = cache(async (id: number) => {
 
   return painting;
 });
-
-// create an image
-// export const createImage = cache(
-//   async (artsId: number, userId: number, imageUrl: string, caption: string) => {
-//     const [image] = await sql<Image[]>`
-//   INSERT INTO images
-//     (arts_id, user_id, image_url, caption )
-//   VALUES
-//     (${artsId}, ${userId}, ${imageUrl}, ${caption} )
-//   RETURNING *
-//   `;
-
-//     return image;
-//   },
-// );
-
-// delete image by
-// export const deleteImageById = cache(async (id: number) => {
-//   const [image] = await sql<Image[]>`
-//   DELETE FROM
-//     images
-//   WHERE
-//     id = ${id}
-//   RETURNING *
-//   `;
-
-//   return image;
-// });

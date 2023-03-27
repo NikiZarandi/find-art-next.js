@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { sql } from './connect';
 
-export type Graficdesign = {
+export type Graphicdesign = {
   id: number;
   name: string;
   imageUrl: string;
@@ -11,54 +11,54 @@ export type Graficdesign = {
 };
 
 // get all images
-export const getArts = cache(async () => {
-  const arts = await sql<Graficdesign[]>`
-    SELECT * FROM arts
+export const getGraphicdesigns = cache(async () => {
+  const graphicdesigns = await sql<Graphicdesign[]>`
+    SELECT * FROM graphicdesigns
   `;
 
-  return arts;
+  return graphicdesigns;
 });
 
-export const getArtById = cache(async (id: number) => {
-  const [art] = await sql<Graficdesign[]>`
+export const getGraphicdesignById = cache(async (id: number) => {
+  const [art] = await sql<Graphicdesign[]>`
     SELECT
       *
     FROM
-      arts
+      graphicdesigns
     WHERE
       id = ${id}
   `;
-  return art;
+  return graphicdesign;
 });
 
-export const getArtByIdAndSessionToken = cache(
+export const getGraphicdesignByIdAndSessionToken = cache(
   async (id: number, token: string) => {
-    const [art] = await sql<Graficdesign[]>`
+    const [art] = await sql<Graphicdesign[]>`
     SELECT
-      arts.*
+      graphicdesigns.*
     FROM
-      arts
+      graphicdesigns
     INNER JOIN
       sessions ON (
         sessions.token = ${token} AND
         sessions.expiry_timestamp > now()
       )
     WHERE
-      arts.id = ${id}
+      graphicdesigns.id = ${id}
   `;
-    return art;
+    return graphicdesigns;
   },
 );
 
-export async function createArt(
+export async function createGraphicdesign(
   name: string,
   imageUrl: string,
   description: string,
   userId: number,
   categoriesId: number,
 ) {
-  const [art] = await sql<Graficdesign[]>`
-    INSERT INTO arts
+  const [graphicdesign] = await sql<Graphicdesign[]>`
+    INSERT INTO graphicdesigns
       ( name,
        image_url,
        description,
@@ -68,56 +68,58 @@ export async function createArt(
       (${name},${imageUrl}, ${description}, ${userId},${categoriesId})
     RETURNING *
   `;
-  return art;
+  return graphicdesign;
 }
-export const updateArtById = cache(async (id: number, name: string) => {
-  const [art] = await sql<Graficdesign[]>`
+export const updateGraphicdesignById = cache(
+  async (id: number, name: string) => {
+    const [art] = await sql<Graficdesign[]>`
       UPDATE
-        arts
+        graphicdesigns
       SET
         name = ${name},
       WHERE
         id = ${id}
       RETURNING *
     `;
-  return art;
-});
-export const deleteArtById = cache(async (id: number) => {
-  const [art] = await sql<Graficdesign[]>`
+    return graphicdesign;
+  },
+);
+export const deleteGraphicdesignById = cache(async (id: number) => {
+  const [graphicdesign] = await sql<Graficdesign[]>`
     DELETE FROM
-      arts
+      graphicdesigns
     WHERE
       id = ${id}
     RETURNING *
   `;
-  return art;
+  return graphicdesign;
 });
 // get images for single user
-export const getArtssByUserId = cache(async (userId: number) => {
-  const arts = await sql<Graficdesign[]>`
+export const getGraphicdesignsByUserId = cache(async (userId: number) => {
+  const graphicdesigns = await sql<Graficdesign[]>`
   SELECT
     *
   FROM
-    arts
+    graphicdesigns
   WHERE
-    arts.user_id = ${userId}
+    graphicdesigns.user_id = ${userId}
   `;
 
-  return arts;
+  return graphicdesigns;
 });
 
 // get single image by id
 export const getImageById = cache(async (id: number) => {
-  const [art] = await sql<Graficdesign[]>`
+  const [Graficdesign] = await sql<Graficdesign[]>`
   SELECT
    *
   FROM
-    arts
+    graphicdesigns
   WHERE
     id = ${id}
   `;
 
-  return art;
+  return getGraphicdesignsByUserId;
 });
 
 // create an image

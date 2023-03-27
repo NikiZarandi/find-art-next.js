@@ -6,14 +6,14 @@ import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Arts',
-  description: 'This is my Products page',
+  description: 'This is my Arts page',
 };
 
 export default async function ArtsPage() {
   const arts = await getArts();
   return (
     <div>
-      {/* <h1 className={styles.h1}>Products</h1> */}
+      {/* <h1 className={styles.h1}>Arts</h1> */}
 
       <main className={styles.images}>
         {arts.map((art) => {

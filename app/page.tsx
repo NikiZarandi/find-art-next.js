@@ -35,7 +35,7 @@ export default function HomePage() {
       <div className={styles.blick}>
         <div>
           <div>
-            <Link href={`/painting/`}>
+            <Link href={`/username/painting`}>
               <Image
                 className={styles.image}
                 src="/images/firstpage/painting.jpg"
@@ -53,7 +53,7 @@ export default function HomePage() {
           </div>
         </div>
         <div>
-          <Link href={`/graphicdesign/`}>
+          <Link href={`/graphicdesigns`}>
             <Image
               className={styles.image}
               src="/images/firstpage/angosht.jpg"
@@ -70,7 +70,7 @@ export default function HomePage() {
           </div> */}
         </div>
         <div>
-          <Link href={`/industrialdesign/`}>
+          <Link href={`/industrialdesigns`}>
             <Image
               className={styles.image}
               src="/images/firstpage/chair.jpg"
@@ -89,7 +89,7 @@ export default function HomePage() {
         </div>
 
         <div>
-          <Link href={`/jewelry/`}>
+          <Link href={`/jewelry`}>
             <Image
               className={styles.image}
               src="/images/firstpage/jewlery.jpg"
@@ -153,16 +153,6 @@ export default function HomePage() {
           mak gallery london art gallery exhibitions museum of modern Art
         </div>
       </div>
-
-      {/* <ul className={styles.ul}>
-        <li>F</li>
-        <li>I</li>
-        <li>N</li>
-        <li>D</li>
-        <li>A</li>
-        <li>R</li>
-        <li>T</li>
-      </ul> */}
     </main>
   );
 }
