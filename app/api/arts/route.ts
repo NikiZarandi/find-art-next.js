@@ -34,6 +34,8 @@ export async function POST(
   const body = await request.json();
   const result = artType.safeParse(body);
 
+  console.log(result);
+
   if (!result.success) {
     console.log(result.error.issues);
 
@@ -47,11 +49,11 @@ export async function POST(
   }
 
   const newArt = await createArt(
-    body.name,
-    body.imageUrl,
-    body.description,
-    body.userId,
-    body.category,
+    result.data.name,
+    result.data.imageUrl,
+    result.data.description,
+    result.data.userId,
+    Number(result.data.categoriesId),
   );
 
   if (!newArt) {

@@ -19,6 +19,7 @@ export default function AddArt(props: Props) {
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<{ message: string }[]>([]);
   const router = useRouter();
+  const dropdown = document.getElementById('dropdown');
 
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
     const files = changeEvent.target.files!;
@@ -93,30 +94,36 @@ export default function AddArt(props: Props) {
           <label className={styles.main} htmlFor="caption">
             description
           </label>
-          <br />
+
           <br />
           <input
             value={description}
             onChange={(event) => setDescription(event.currentTarget.value)}
           />
-          <br />
+
           <br />
           <label htmlFor="caption">name</label>
-          <br />
+
           <br />
           <input
             value={name}
             onChange={(event) => setName(event.currentTarget.value)}
           />
-          <br />
+
           <br />
           <label htmlFor="caption">category</label>
           <br />
-          <br />
+
           <input
             value={category}
             onChange={(event) => setCategory(event.currentTarget.value)}
           />
+          <select id="dropdown">
+            <option value="categoryId1">painting</option>
+            <option value="categoryId2">Design</option>
+            <option value="categoryId3">Industrial Design</option>
+            <option value="option3">Jewellery</option>
+          </select>
           <div>
             <button
               className={styles.create}

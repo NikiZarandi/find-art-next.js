@@ -39,6 +39,6 @@
     "migrations/1677430232-creatTableCategory.mjs",
     "migrations/1677432151-createTableSessions.mjs",
     "app/profile/[username]/login/page.tsx"
-  ],
+, "database/ jewelryts"  ],
   "exclude": ["node_modules"]
 }

@@ -6,7 +6,7 @@ export async function up(sql) {
       image_url varchar(500),
       description varchar(500),
       user_id integer REFERENCES users (id) ON DELETE CASCADE,
-      categories_id integer REFERENCES category(id) ON DELETE CASCADE
+      categories_id integer
     )
   `;
 }

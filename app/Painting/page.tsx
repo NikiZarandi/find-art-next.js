@@ -1,16 +1,38 @@
-import { getArts } from '@/database/arts';
+// import Link from 'next/link';
+
+// export const metadata = {
+//   title: 'Thank You',
+//   description: 'Thank you for order ',
+//   icons: {
+//     shortcut: '/icon.svg',
+//   },
+// };
+// export default function ThankyouPage() {
+//   return (
+//     <main>
+//       <div>
+//         <h1> Thank you!</h1>
+//         <p>Your order was placed successfully.</p>
+//         <span>
+//           <Link href="/"> Back to home [↙]</Link>
+//         </span>
+//       </div>
+//     </main>
+//   );
+// }
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import styles from './page.module.scss';
 
 export const metadata = {
-  title: 'Arts',
-  description: 'This is my Products page',
+  title: 'painting',
+  description: 'This is my Painting page',
 };
 
 export default async function ArtsPage() {
-  const arts = await getArts();
+  const painting = await getPainting();
   return (
     <div>
       {/* <h1 className={styles.h1}>Products</h1> */}

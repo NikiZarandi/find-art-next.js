@@ -21,6 +21,18 @@
     }
   }
 }
+/* Default styles for navbar */
+.navbar {
+  width: 800px;
+  /* other styles */
+}
+/* Media query for iPhone screens */
+@media screen and (max-width: 375px) {
+  .navbar {
+    width: 100%; /* or a smaller width that fits better on a smaller screen */
+    /* other styles */
+  }
+}
 
 .header {
   display: flex;
