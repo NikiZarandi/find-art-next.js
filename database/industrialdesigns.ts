@@ -13,7 +13,7 @@ export type Industrialdesign = {
 // get all images
 export const getIndustrialdesigns = cache(async () => {
   const industrialdesigns = await sql<Industrialdesign[]>`
-    SELECT * FROM industrialdesigns
+    SELECT * FROM arts WHERE categories_id=3
   `;
 
   return industrialdesigns;
@@ -31,9 +31,9 @@ export const getIndustrialdesignById = cache(async (id: number) => {
   return Industrialdesign;
 });
 
-export const getIndustrialdesignsByIdAndSessionToken = cache(
+export const getIndustrialdesignByIdAndSessionToken = cache(
   async (id: number, token: string) => {
-    const [art] = await sql<Industrialdesign[]>`
+    const [industrialdesigns] = await sql<Industrialdesign[]>`
     SELECT
     industrialdesigns.*
     FROM
@@ -46,7 +46,7 @@ export const getIndustrialdesignsByIdAndSessionToken = cache(
     WHERE
     industrialdesigns.id = ${id}
   `;
-    return art;
+    return industrialdesigns;
   },
 );
 
@@ -58,7 +58,7 @@ export async function createArt(
   categoriesId: number,
 ) {
   const [industrialdesign] = await sql<Industrialdesign[]>`
-    INSERT INTO arts
+    INSERT INTO industrialdesignss
       ( name,
        image_url,
        description,
@@ -121,31 +121,3 @@ export const getImageById = cache(async (id: number) => {
 
   return industrialdesign;
 });
-
-// create an image
-// export const createImage = cache(
-//   async (artsId: number, userId: number, imageUrl: string, caption: string) => {
-//     const [image] = await sql<Image[]>`
-//   INSERT INTO images
-//     (arts_id, user_id, image_url, caption )
-//   VALUES
-//     (${artsId}, ${userId}, ${imageUrl}, ${caption} )
-//   RETURNING *
-//   `;
-
-//     return image;
-//   },
-// );
-
-// delete image by
-// export const deleteImageById = cache(async (id: number) => {
-//   const [image] = await sql<Image[]>`
-//   DELETE FROM
-//     images
-//   WHERE
-//     id = ${id}
-//   RETURNING *
-//   `;
-
-//   return image;
-// });

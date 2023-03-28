@@ -13,7 +13,7 @@ export type Painting = {
 // get all images
 export const getPaintings = cache(async () => {
   const paintings = await sql<Painting[]>`
-    SELECT * FROM paintings
+    SELECT * FROM arts WHERE categories_id=1
   `;
 
   return paintings;
@@ -57,7 +57,7 @@ export async function createPainting(
   userId: number,
   categoriesId: number,
 ) {
-  const [art] = await sql<Painting[]>`
+  const [painting] = await sql<Painting[]>`
     INSERT INTO paintings
       ( name,
        image_url,
@@ -68,7 +68,7 @@ export async function createPainting(
       (${name},${imageUrl}, ${description}, ${userId},${categoriesId})
     RETURNING *
   `;
-  return art;
+  return painting;
 }
 export const updatePaintingById = cache(async (id: number, name: string) => {
   const [painting] = await sql<Painting[]>`
@@ -100,7 +100,7 @@ export const getPaintingssByUserId = cache(async (userId: number) => {
   FROM
     paintings
   WHERE
-  industrialdesigns.user_id = ${userId}
+  paintings.user_id = ${userId}
   `;
 
   return paintings;

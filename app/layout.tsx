@@ -44,7 +44,7 @@ export default async function RootLayout(props: Props) {
         <CookieBanner />
         <header className={styles.header}>
           <img
-            className={styles.logoz}
+            className={styles.image}
             src="images/firstpage/logo.svg "
             alt="logo "
           />

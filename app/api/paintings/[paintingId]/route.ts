@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import {
-  deleteArtById,
+  deletePaintingById,
   getPaintingById,
   Painting,
 } from '../../../../database/paintings';

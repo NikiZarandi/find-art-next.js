@@ -1,5 +1,4 @@
-import { Art } from '@/database/arts';
-import { getArtssByUserId } from '@/database/graphicdesigns';
+import { Art, getArtsByUserId } from '@/database/arts';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -42,7 +41,7 @@ export default async function UserProfile({ params }: Props) {
   }
 
   // const favorites = await getFavoriteByImageId(user.id);
-  const arts = await getArtssByUserId(user.id);
+  const arts = await getArtsByUserId(user.id);
 
   return (
     <main className={styles.Profilepage}>
@@ -68,7 +67,7 @@ export default async function UserProfile({ params }: Props) {
                   src={`${art.imageUrl}`}
                   alt="user generated image"
                   width="200"
-                  height="200"
+                  height="400"
                 />
               </div>
               <div>

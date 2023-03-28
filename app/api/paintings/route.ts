@@ -1,8 +1,7 @@
-import { createPainting } from '@/database/ jewelries';
 import { cookies } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import { number, z } from 'zod';
-import { Art, createArt } from '../../../database/arts';
+import { createPainting, Painting } from '../../../database/paintings';
 import { getUserBySessionToken } from '../../../database/users';
 
 const artType = z.object({
@@ -13,17 +12,17 @@ const artType = z.object({
   categoriesId: z.string(),
 });
 
-export type ArtsResponseBodyPost =
+export type PaintingsResponseBodyPost =
   | {
       error: string;
     }
   | {
-      art: Art;
+      painting: Painting;
     };
 
 export async function POST(
   request: NextRequest,
-): Promise<NextResponse<ArtsResponseBodyPost>> {
+): Promise<NextResponse<PaintingsResponseBodyPost>> {
   const cookieStore = cookies();
   const token = cookieStore.get('sessionToken');
   const user = token && (await getUserBySessionToken(token.value));
@@ -63,5 +62,5 @@ export async function POST(
       { status: 500 },
     );
   }
-  return NextResponse.json({ art: newPainting });
+  return NextResponse.json({ painting: newPainting });
 }

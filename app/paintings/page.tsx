@@ -2,6 +2,7 @@ import { getPaintings } from '@/database/paintings';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import styles from './page.module.scss';
 
 export const metadata = {
   title: 'Paintings',
@@ -14,17 +15,14 @@ export default async function PaintingsPage() {
     <div>
       {/* <h1 className={styles.h1}>Products</h1> */}
 
-      <main>
+      <main className={styles.images}>
         {paintings.map((painting) => {
           // console.log(paintings);
           return (
             <div key={`paintings-${painting.id}`}>
               <Link href={`/paintings/${painting.id}`}>{painting.name}</Link>
 
-              <h2>{painting.description}</h2>
-
               <div>
-                <h2>{painting.categoriesId}</h2>
                 <Image
                   src={painting.imageUrl}
                   alt={painting.name}
@@ -32,6 +30,7 @@ export default async function PaintingsPage() {
                   width={200}
                 />
               </div>
+              <h2>{painting.description}</h2>
             </div>
           );
         })}

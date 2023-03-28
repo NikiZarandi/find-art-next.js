@@ -35,13 +35,13 @@ export default function HomePage() {
       <div className={styles.blick}>
         <div>
           <div>
-            <Link href={`/username/painting`}>
+            <Link href={`/paintings`}>
               <Image
-                className={styles.image}
+                className={styles.backgroundimage}
                 src="/images/firstpage/painting.jpg"
                 alt="painting"
                 width="200"
-                height="500"
+                height="300"
               />
               PAINTING
             </Link>
@@ -55,7 +55,7 @@ export default function HomePage() {
         <div>
           <Link href={`/graphicdesigns`}>
             <Image
-              className={styles.image}
+              className={styles.backgroundimage}
               src="/images/firstpage/angosht.jpg"
               alt="angosht"
               width="200"
@@ -72,7 +72,7 @@ export default function HomePage() {
         <div>
           <Link href={`/industrialdesigns`}>
             <Image
-              className={styles.image}
+              className={styles.backgroundimage}
               src="/images/firstpage/chair.jpg"
               alt="chair"
               width="200"
@@ -91,7 +91,7 @@ export default function HomePage() {
         <div>
           <Link href={`/jewelry`}>
             <Image
-              className={styles.image}
+              className={styles.backgroundimage}
               src="/images/firstpage/jewlery.jpg"
               alt="jewlery"
               width="200"
@@ -117,15 +117,7 @@ export default function HomePage() {
         and concerns are important to us. We want to inspire you with our design
         ideas.
       </div>
-
       <br />
-
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-
       <br />
       <br />
       <br />

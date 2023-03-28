@@ -118,15 +118,21 @@ export default function AddArt(props: Props) {
             value={category}
             onChange={(event) => setCategory(event.currentTarget.value)}
           />
-          <select id="dropdown">
-            <option value="categoryId1">painting</option>
-            <option value="categoryId2">Design</option>
-            <option value="categoryId3">Industrial Design</option>
-            <option value="option3">Jewellery</option>
+
+          <select
+            className={styles.main}
+            id="dropdown"
+            value={category}
+            // onChange={(event) => setCategory(parseInt(event.target.value))}
+            onChange={(event) => setCategory(event.currentTarget.value)}
+          >
+            <option value={1}>Painting</option>
+            <option value={2}>Graphicdesign</option>
+            <option value={3}>Industrialdesign</option>
+            <option value={4}>Jewelry</option>
           </select>
           <div>
             <button
-              className={styles.create}
               onClick={async (event) => {
                 // const userId = props.userId;
                 const imageUrl = imageSrc;

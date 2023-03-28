@@ -13,7 +13,7 @@ export type Jewelry = {
 // get all images
 export const getJewelries = cache(async () => {
   const jewelries = await sql<Jewelry[]>`
-    SELECT * FROM Jewelries
+    SELECT * FROM arts WHERE categories_id=4
   `;
 
   return jewelries;
@@ -50,7 +50,7 @@ export const getJewelryByIdAndSessionToken = cache(
   },
 );
 
-export async function createPainting(
+export async function createJewelry(
   name: string,
   imageUrl: string,
   description: string,
@@ -93,7 +93,7 @@ export const deleteJewelryById = cache(async (id: number) => {
   return jewelry;
 });
 // get images for single user
-export const getjewelriessByUserId = cache(async (userId: number) => {
+export const getjewelriesByUserId = cache(async (userId: number) => {
   const jewelries = await sql<Jewelry[]>`
   SELECT
     *
@@ -119,31 +119,3 @@ export const getImageById = cache(async (id: number) => {
 
   return jewelry;
 });
-
-// create an image
-// export const createImage = cache(
-//   async (artsId: number, userId: number, imageUrl: string, caption: string) => {
-//     const [image] = await sql<Image[]>`
-//   INSERT INTO images
-//     (arts_id, user_id, image_url, caption )
-//   VALUES
-//     (${artsId}, ${userId}, ${imageUrl}, ${caption} )
-//   RETURNING *
-//   `;
-
-//     return image;
-//   },
-// );
-
-// delete image by
-// export const deleteImageById = cache(async (id: number) => {
-//   const [image] = await sql<Image[]>`
-//   DELETE FROM
-//     images
-//   WHERE
-//     id = ${id}
-//   RETURNING *
-//   `;
-
-//   return image;
-// });

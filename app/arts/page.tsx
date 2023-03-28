@@ -20,19 +20,19 @@ export default async function ArtsPage() {
           console.log(arts);
           return (
             <div key={`arts-${art.id}`}>
-              <Link href={`/arts/${art.id}`}>{art.name}</Link>
-
-              <h2>{art.description}</h2>
-
               <div>
-                <h2>{art.categoriesId}</h2>
+                {/* <h2>{art.categoriesId}</h2> */}
                 <Image
+                  className={styles.image}
                   src={art.imageUrl}
                   alt={art.name}
-                  height={200}
-                  width={200}
+                  height={360}
+                  width={240}
                 />
               </div>
+              <Link href={`/arts/${art.id}`}>{art.name}</Link>
+
+              <h2 className={styles.description}>{art.description}</h2>
             </div>
           );
         })}
