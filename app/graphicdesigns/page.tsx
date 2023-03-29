@@ -20,20 +20,28 @@ export default async function GraphicdesignsPage() {
           // console.log(graphicdesigns);
           return (
             <div key={`graphicdesigns-${graphicdesign.id}`}>
-              <Link href={`/graphicdesigns/${graphicdesign.id}`}>
-                {graphicdesign.name}
-              </Link>
-
-              <h2>{graphicdesign.description}</h2>
-
               <div>
-                <h2>{graphicdesign.categoriesId}</h2>
                 <Image
                   src={graphicdesign.imageUrl}
                   alt={graphicdesign.name}
-                  height={200}
-                  width={200}
+                  height={360}
+                  width={250}
                 />
+              </div>
+              <div>
+                <div>
+                  <Link
+                    className={styles.name}
+                    href={`/graphicdesigns/${graphicdesign.id}`}
+                  >
+                    {graphicdesign.name}
+                  </Link>
+                </div>
+                <div>
+                  <h2 className={styles.description}>
+                    {graphicdesign.description}
+                  </h2>
+                </div>
               </div>
             </div>
           );

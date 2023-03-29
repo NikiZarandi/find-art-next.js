@@ -27,12 +27,20 @@ export default async function ArtsPage() {
                   src={art.imageUrl}
                   alt={art.name}
                   height={360}
-                  width={240}
+                  width={250}
                 />
               </div>
-              <Link href={`/arts/${art.id}`}>{art.name}</Link>
+              <div>
+                <div>
+                  <Link className={styles.description} href={`/arts/${art.id}`}>
+                    {art.name}
+                  </Link>
+                </div>
 
-              <h2 className={styles.description}>{art.description}</h2>
+                <div>
+                  <h2 className={styles.description}>{art.description}</h2>
+                </div>
+              </div>
             </div>
           );
         })}

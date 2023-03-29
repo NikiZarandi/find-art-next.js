@@ -20,18 +20,23 @@ export default async function JewelriesPage() {
           // console.log(jewelries);
           return (
             <div key={`jewelries-${jewelry.id}`}>
-              <Link href={`/jewelries/${jewelry.id}`}>{jewelry.name}</Link>
-
-              <h2>{jewelry.description}</h2>
-
               <div>
-                <h2>{jewelry.categoriesId}</h2>
+                {/* <h2>{jewelry.categoriesId}</h2> */}
                 <Image
+                  className={styles.image}
                   src={jewelry.imageUrl}
                   alt={jewelry.name}
-                  height={200}
-                  width={200}
+                  height={360}
+                  width={250}
                 />
+              </div>
+              <div>
+                <div>
+                  <Link href={`/jewelries/${jewelry.id}`}>{jewelry.name}</Link>
+                </div>
+                <div>
+                  <h2 className={styles.description}>{jewelry.description}</h2>
+                </div>
               </div>
             </div>
           );

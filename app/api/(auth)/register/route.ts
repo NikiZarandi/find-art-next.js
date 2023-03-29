@@ -76,7 +76,7 @@ export async function POST(
   const csrfSecret = createCsrfSecret();
 
   // - create the session
-  const session = await createSession(token, newUser.id, csrfSecret);
+  const session = await createSession(token, newUser.id);
 
   if (!session) {
     return NextResponse.json(

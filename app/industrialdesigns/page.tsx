@@ -22,20 +22,29 @@ export default async function IndustrialdesignPage() {
           // console.log(industrialdesigns);
           return (
             <div key={`industrialdesigns-${industrialdesign.id}`}>
-              <Link href={`/industrialdesigns/${industrialdesign.id}`}>
-                {industrialdesign.name}
-              </Link>
-
-              <h2>{industrialdesign.description}</h2>
-
               <div>
-                <h2>{industrialdesign.categoriesId}</h2>
                 <Image
+                  className={styles.image}
                   src={industrialdesign.imageUrl}
                   alt={industrialdesign.name}
-                  height={200}
-                  width={200}
+                  height={360}
+                  width={250}
                 />
+              </div>
+              <div>
+                <div>
+                  <Link
+                    className={styles.name}
+                    href={`/industrialdesigns/${industrialdesign.id}`}
+                  >
+                    {industrialdesign.name}
+                  </Link>
+                </div>
+                <div>
+                  <h2 className={styles.description}>
+                    {industrialdesign.description}
+                  </h2>
+                </div>
               </div>
             </div>
           );

@@ -20,17 +20,25 @@ export default async function PaintingsPage() {
           // console.log(paintings);
           return (
             <div key={`paintings-${painting.id}`}>
-              <Link href={`/paintings/${painting.id}`}>{painting.name}</Link>
-
               <div>
                 <Image
+                  className={styles.image}
                   src={painting.imageUrl}
                   alt={painting.name}
-                  height={200}
-                  width={200}
+                  height={360}
+                  width={250}
                 />
               </div>
-              <h2>{painting.description}</h2>
+              <div>
+                <div>
+                  <Link href={`/paintings/${painting.id}`}>
+                    {painting.name}
+                  </Link>
+                </div>
+                <div>
+                  <h2 className={styles.description}>{painting.description}</h2>
+                </div>
+              </div>
             </div>
           );
         })}

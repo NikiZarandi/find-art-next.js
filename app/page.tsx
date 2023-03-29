@@ -89,7 +89,7 @@ export default function HomePage() {
         </div>
 
         <div>
-          <Link href={`/jewelry`}>
+          <Link href={`/jewelries`}>
             <Image
               className={styles.backgroundimage}
               src="/images/firstpage/jewlery.jpg"
