@@ -9,7 +9,7 @@ const artType = z.object({
   imageUrl: z.string(),
   description: z.string(),
   userId: z.number(),
-  categoriesId: z.string(),
+  categoriesId: z.number(),
 });
 
 export type ArtsResponseBodyPost =

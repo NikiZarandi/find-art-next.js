@@ -45,8 +45,8 @@ export default async function UserProfile({ params }: Props) {
 
   return (
     <main className={styles.Profilepage}>
-      <h1>
-        <b className={styles.username}>Hallo {user.username}</b>
+      <h1 className={styles.username}>
+        <b>Hallo {user.username}</b>
       </h1>
       {/* <p>id: {user.id}</p> */}
       <Link href={`/profile/${user.username}/userfavorites`}>
@@ -58,13 +58,13 @@ export default async function UserProfile({ params }: Props) {
       ) : (
         ''
       )}
-      <span>
+      <span className={styles.boxinfoseiz}>
         {arts.map((art) => {
           return (
             <div key={`user-${art.userId}`}>
-              <div>
+              <div  className={styles.image}>
                 <Image
-                  className={styles.image}
+
                   src={`${art.imageUrl}`}
                   alt="user generated image"
                   width="250"

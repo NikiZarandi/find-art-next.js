@@ -1,14 +1,84 @@
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
 .Profilepage {
   justify-content: center;
   align-items: center;
   margin-left: 20%;
   margin-right: 20%;
+
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+
+      .choosefile {
+        margin-bottom: 20px;
+      }
+
+      .preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        figure {
+          margin: 0;
+          margin-right: 20px;
+
+          img {
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .boxinfo {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .uploud {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0070f3;
+        color: #fff;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #0058c1;
+        }
+      }
+    }
+  }
 }
 
 .myFavorites {
@@ -21,10 +91,10 @@
   width: 250px;
   color: #3d3a3a;
   font-size: medium;
-  height: 0.8cm;
+  height: 1cm;
   width: 9cm;
 
-  margin-bottom: 10%;
+  margin-bottom: 3%;
   background-color: rgb(255, 255, 255);
 }
 .boxinfo {
@@ -32,7 +102,7 @@
   color: #3d3a3a;
   font-size: medium;
   margin-bottom: 9%;
-  height: 0.8cm;
+  height: 01cm;
   width: 9cm;
 }
 
@@ -40,6 +110,14 @@
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 16px;
   padding-top: 1cm;
+}
+.h2 {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 16px;
+  padding-top: 1cm;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .main {
   height: 5px;
@@ -61,6 +139,7 @@
   margin-top: 10%;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  display: flex;
 }
 
 .choosefile {
@@ -68,6 +147,87 @@
   justify-content: center;
 }
 .username {
-  font-size: 130%;
-  margin-top: 2cm;
+  font-size: 200%;
+
+  padding-top: 2cm;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .choosefile {
+      margin-bottom: 20px;
+    }
+
+    .preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      figure {
+        margin: 0;
+        margin-right: 20px;
+
+        img {
+          max-width: 300px;
+          max-height: 300px;
+          object-fit: contain;
+        }
+      }
+    }
+
+    .boxinfo {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      font-size: 1.2rem;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .uploud {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #0070f3;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #0058c1;
+      }
+    }
+  }
+}
+.username {
+  margin-top: 20%;
+}
+.Profilepage2 {
+  padding-top: 3cm;
 }

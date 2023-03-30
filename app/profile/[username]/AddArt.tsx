@@ -14,7 +14,7 @@ export default function AddArt(props: Props) {
   const [arts, setArts] = useState<Art[]>(props.arts);
   const [description, setDescription] = useState<string>('');
   const [name, setName] = useState<string>('');
-  const [category, setCategory] = useState<string>('');
+  const [category, setCategory] = useState<number>();
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<{ message: string }[]>([]);
@@ -74,107 +74,115 @@ export default function AddArt(props: Props) {
         <div>
           <h1 className={styles.h1}>SHARE YOUR ARTS & DESIGNS!</h1>
           {/* <p>{error}</p> */}
-          <form method="post" onSubmit={handleOnSubmit}>
-            <label className={styles.choosefile}>
-              Upload your image here:
-              <input onChange={handleOnChange} type="file" name="file" />
+          <div className={styles.choosefile}>
+            <form method="post" onSubmit={handleOnSubmit}>
+              <label>
+                Upload your image here:
+                <input
+                  className={styles.h2}
+                  onChange={handleOnChange}
+                  type="file"
+                  name="file"
+                />
+              </label>
+              <p>Preview</p>
+              <figure>
+                <img src={imageSrc} alt="User" />
+              </figure>
+              <div>
+                <button className={styles.uploud}>Upload</button>
+              </div>
+            </form>
+
+            <label className={styles.boxinfo} htmlFor="caption">
+              description
             </label>
-            <p>Preview</p>
-            <figure>
-              <img src={imageSrc} alt="User" />
-            </figure>
-            <div>
-              <button className={styles.uploud}>Upload</button>
-            </div>
-          </form>
 
-          <label className={styles.boxinfo} htmlFor="caption">
-            description
-          </label>
-
-          <br />
-          <input
-            className={styles.boxinfo}
-            value={description}
-            onChange={(event) => setDescription(event.currentTarget.value)}
-          />
-
-          <br />
-          <label className={styles.boxinfo} htmlFor="caption">
-            name
-          </label>
-
-          <br />
-          <input
-            className={styles.boxinfo}
-            value={name}
-            onChange={(event) => setName(event.currentTarget.value)}
-          />
-
-          <br />
-          <label className={styles.boxinfo} htmlFor="caption">
-            category
-          </label>
-          <br />
-
-          <input
-            className={styles.boxinfo}
-            value={category}
-            onChange={(event) => setCategory(event.currentTarget.value)}
-          />
-
-          <select
-            className={styles.boxinfo}
-            // className={styles.main}
-            id="dropdown"
-            value={category}
-            // onChange={(event) => setCategory(parseInt(event.target.value))}
-            onChange={(event) => setCategory(event.currentTarget.value)}
-          >
-            <option value={1}>Painting</option>
-            <option value={2}>Graphicdesign</option>
-            <option value={3}>Industrialdesign</option>
-            <option value={4}>Jewelry</option>
-          </select>
-          <div>
-            <button
+            <br />
+            <input
               className={styles.boxinfo}
-              onClick={async (event) => {
-                // const userId = props.userId;
-                const imageUrl = imageSrc;
-                event.preventDefault();
-                const response = await fetch('/api/arts', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    name: name,
-                    imageUrl: imageSrc,
-                    description: description,
-                    userId: props.userId,
-                    categoriesId: category,
-                  }),
-                });
-                const data = await response.json();
+              value={description}
+              onChange={(event) => setDescription(event.currentTarget.value)}
+            />
 
-                if (data.error) {
-                  setError(data.error);
-                  return;
-                }
+            <br />
+            <label className={styles.boxinfo} htmlFor="caption">
+              name
+            </label>
 
-                // router.replace(`/profile/${username}`);
-                setArts([...arts, data.art]);
-                router.refresh();
-              }}
+            <br />
+            <input
+              className={styles.boxinfo}
+              value={name}
+              onChange={(event) => setName(event.currentTarget.value)}
+            />
+
+            <br />
+            <label className={styles.boxinfo} htmlFor="caption">
+              category
+            </label>
+            <br />
+
+            {/* <input
+              className={styles.boxinfo}
+              value={category}
+              onChange={(event) => setCategory(event.currentTarget.value)}
+            /> */}
+
+            <select
+              className={styles.boxinfo}
+              id="dropdown"
+              value={category}
+              onChange={(event) =>
+                setCategory(Number(event.currentTarget.value))
+              }
+              // onChange={(event) => setCategory(event.currentTarget.value)}
             >
-              create
-            </button>
+              <option value={1}>Painting</option>
+              <option value={2}>Graphicdesign</option>
+              <option value={3}>Industrialdesign</option>
+              <option value={4}>Jewelry</option>
+            </select>
+            <div>
+              <button
+                className={styles.boxinfo}
+                onClick={async (event) => {
+                  // const userId = props.userId;
+                  const imageUrl = imageSrc;
+                  event.preventDefault();
+                  const response = await fetch('/api/arts', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      name: name,
+                      imageUrl: imageSrc,
+                      description: description,
+                      userId: props.userId,
+                      categoriesId: category,
+                    }),
+                  });
+                  const data = await response.json();
+
+                  if (data.error) {
+                    setError(data.error);
+                    return;
+                  }
+
+                  // router.replace(`/profile/${username}`);
+                  setArts([...arts, data.art]);
+                  router.refresh();
+                }}
+              >
+                create
+              </button>
+            </div>
+            {typeof error === 'string' && (
+              <div style={{ color: 'red' }}>{error}</div>
+            )}
+            {/* </form> */}
           </div>
-          {typeof error === 'string' && (
-            <div style={{ color: 'red' }}>{error}</div>
-          )}
-          {/* </form> */}
         </div>
       </div>
     </main>

@@ -8,7 +8,7 @@ export type Art = {
   description: string;
   userId: number;
   categoryId: number;
-  caption: string;
+  // caption: string;
 };
 
 // get all arts
