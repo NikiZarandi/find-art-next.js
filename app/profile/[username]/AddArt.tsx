@@ -75,11 +75,8 @@ export default function AddArt(props: Props) {
           <h1 className={styles.h1}>SHARE YOUR ARTS & DESIGNS!</h1>
           {/* <p>{error}</p> */}
           <form method="post" onSubmit={handleOnSubmit}>
-            <label>
+            <label className={styles.choosefile}>
               Upload your image here:
-              <br />
-              <br />
-              <br />
               <input onChange={handleOnChange} type="file" name="file" />
             </label>
             <p>Preview</p>
@@ -91,36 +88,44 @@ export default function AddArt(props: Props) {
             </div>
           </form>
 
-          <label className={styles.main} htmlFor="caption">
+          <label className={styles.boxinfo} htmlFor="caption">
             description
           </label>
 
           <br />
           <input
+            className={styles.boxinfo}
             value={description}
             onChange={(event) => setDescription(event.currentTarget.value)}
           />
 
           <br />
-          <label htmlFor="caption">name</label>
+          <label className={styles.boxinfo} htmlFor="caption">
+            name
+          </label>
 
           <br />
           <input
+            className={styles.boxinfo}
             value={name}
             onChange={(event) => setName(event.currentTarget.value)}
           />
 
           <br />
-          <label htmlFor="caption">category</label>
+          <label className={styles.boxinfo} htmlFor="caption">
+            category
+          </label>
           <br />
 
           <input
+            className={styles.boxinfo}
             value={category}
             onChange={(event) => setCategory(event.currentTarget.value)}
           />
 
           <select
-            className={styles.main}
+            className={styles.boxinfo}
+            // className={styles.main}
             id="dropdown"
             value={category}
             // onChange={(event) => setCategory(parseInt(event.target.value))}
@@ -133,6 +138,7 @@ export default function AddArt(props: Props) {
           </select>
           <div>
             <button
+              className={styles.boxinfo}
               onClick={async (event) => {
                 // const userId = props.userId;
                 const imageUrl = imageSrc;

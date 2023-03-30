@@ -32,7 +32,12 @@ export default async function JewelriesPage() {
               </div>
               <div>
                 <div>
-                  <Link href={`/jewelries/${jewelry.id}`}>{jewelry.name}</Link>
+                  <Link
+                    className={styles.name}
+                    href={`/jewelries/${jewelry.id}`}
+                  >
+                    {jewelry.name}
+                  </Link>
                 </div>
                 <div>
                   <h2 className={styles.description}>{jewelry.description}</h2>

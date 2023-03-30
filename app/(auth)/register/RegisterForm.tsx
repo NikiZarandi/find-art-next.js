@@ -66,7 +66,7 @@ export default function RegisterForm(props: { returnTo?: string | string[] }) {
             />
           </label>
           <div>
-            <div className={styles.mitte}>
+            <div className={styles.register}>
               <button className={styles.button}>Register</button>
             </div>
           </div>

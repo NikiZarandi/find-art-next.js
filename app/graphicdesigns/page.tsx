@@ -22,6 +22,7 @@ export default async function GraphicdesignsPage() {
             <div key={`graphicdesigns-${graphicdesign.id}`}>
               <div>
                 <Image
+                  className={styles.image}
                   src={graphicdesign.imageUrl}
                   alt={graphicdesign.name}
                   height={360}

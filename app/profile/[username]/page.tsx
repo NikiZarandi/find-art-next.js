@@ -46,7 +46,7 @@ export default async function UserProfile({ params }: Props) {
   return (
     <main className={styles.Profilepage}>
       <h1>
-        <b>Hallo {user.username}</b>
+        <b className={styles.username}>Hallo {user.username}</b>
       </h1>
       {/* <p>id: {user.id}</p> */}
       <Link href={`/profile/${user.username}/userfavorites`}>
@@ -64,10 +64,11 @@ export default async function UserProfile({ params }: Props) {
             <div key={`user-${art.userId}`}>
               <div>
                 <Image
+                  className={styles.image}
                   src={`${art.imageUrl}`}
                   alt="user generated image"
-                  width="200"
-                  height="400"
+                  width="250"
+                  height="360"
                 />
               </div>
               <div>

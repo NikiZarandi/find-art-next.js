@@ -4,28 +4,30 @@
   justify-content: center;
   align-items: center;
   text-decoration: solid;
-  padding: 30px;
+  padding: 90px;
+
+  // background-image: url('/images/logo/background.jpeg');
+  // padding-left: 0%;
+  // background-size: cover;
+  // background-position: center center;
   border-radius: 10%;
-}
-.password {
-  margin-bottom: 10%;
-  color: rgb(255, 255, 255);
-  width: 300px;
 }
 .color {
   margin-bottom: 10%;
-  text-decoration-color: white;
-  width: 300px;
+  color: rgb(19, 16, 16);
+  width: 400px;
+  height: 40px;
 }
+
 .password {
+  padding-bottom: 15%;
   margin-bottom: 10%;
-  text-decoration-color: white;
-  width: 300px;
+  color: rgb(255, 255, 255);
+  width: 400px;
+  height: 40px;
+  font-size: 110%;
 }
 .input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: rgb(34, 31, 31);
   font-size: 16px;
 }
@@ -38,39 +40,53 @@
   background-color: rgb(255, 255, 255);
   color: rgb(12, 3, 3);
   height: 45px;
-  width: 187px;
+
   justify-content: center;
   align-items: center;
   text-decoration: none;
   border: 1px solid rgb(146, 148, 248);
   position: relative;
   overflow: hidden;
+  margin-top: 10%;
+  width: 400px;
 }
 .button:hover {
   box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
-  color: rgb(255, 255, 255);
+  color: #4254cb;
 }
+
 .findart {
   justify-content: center;
   align-items: center;
   display: grid;
   color: rgb(255, 255, 255);
+  font-size: 130%;
 }
-.mitte {
-  justify-content: center;
-  align-items: center;
-  display: grid;
-}
+// .register {
+//   justify-content: center;
+//   align-items: center;
+// }
 .h3 {
-  margin-top: 20%;
+  margin-top: 10%;
   margin-bottom: 10%;
   color: rgb(255, 255, 255);
+  font-size: 130%;
 }
 .input {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100vh;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-bottom: 4cm;
+}
+.event {
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+.login {
+  font-size: 190%;
 }
 
 @keyframes gradient {
