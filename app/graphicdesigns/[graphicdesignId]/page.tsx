@@ -1,6 +1,5 @@
-import { getGraphicdesignById } from '@/database/graphicdesigns';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getGraphicdesignById } from '../../../database/graphicdesigns';
 
 export const dynamic = 'force-dynamic';
 

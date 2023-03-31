@@ -1,7 +1,7 @@
-import { getArts } from '@/database/arts';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getArts } from '../../database/arts';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -31,14 +31,13 @@ export default async function ArtsPage() {
                 />
               </div>
               <div>
+                <h2 className={styles.name}>{art.description}</h2>
+              </div>
+              <div>
                 <div>
                   <Link className={styles.description} href={`/arts/${art.id}`}>
                     {art.name}
                   </Link>
-                </div>
-
-                <div>
-                  <h2 className={styles.description}>{art.description}</h2>
                 </div>
               </div>
             </div>

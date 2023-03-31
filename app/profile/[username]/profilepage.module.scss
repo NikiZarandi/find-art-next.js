@@ -5,11 +5,12 @@
 }
 
 .Profilepage {
+  border-radius: 40px;
   justify-content: center;
   align-items: center;
   margin-left: 20%;
   margin-right: 20%;
-
+  padding-top: 0px;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -44,8 +45,6 @@
           margin-right: 20px;
 
           img {
-            max-width: 300px;
-            max-height: 300px;
             object-fit: contain;
           }
         }
@@ -55,23 +54,25 @@
         margin-bottom: 10px;
         padding: 10px;
         border: none;
-        border-radius: 5px;
+        border-radius: 15px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         font-size: 1.2rem;
         width: 100%;
         max-width: 300px;
+        display: flex;
       }
 
       .uploud {
         margin-top: 20px;
         padding: 10px 20px;
         border: none;
-        border-radius: 5px;
+        border-radius: 15px;
         background-color: #0070f3;
         color: #fff;
         font-size: 1.2rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        display: flex;
 
         &:hover {
           background-color: #0058c1;
@@ -93,23 +94,25 @@
   font-size: medium;
   height: 1cm;
   width: 9cm;
-
-  margin-bottom: 3%;
+  border-radius: 20px;
+  margin-bottom: 3px;
   background-color: rgb(255, 255, 255);
 }
 .boxinfo {
   width: 250px;
   color: #3d3a3a;
   font-size: medium;
-  margin-bottom: 9%;
+  margin-bottom: 9px;
   height: 01cm;
   width: 9cm;
+  border-radius: 20px;
 }
 
 .h1 {
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 16px;
-  padding-top: 1cm;
+  margin-top: -160px;
+  display: flex;
 }
 .h2 {
   font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
@@ -132,14 +135,10 @@
   display: contents;
 }
 .image {
-  justify-content: center;
-  align-items: center;
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 10%;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border-radius: 15px;
 }
 
 .choosefile {
@@ -149,7 +148,7 @@
 .username {
   font-size: 200%;
 
-  padding-top: 2cm;
+  padding-top: 70px;
 }
 @keyframes gradient {
   0% {
@@ -167,7 +166,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 
   .form {
     display: flex;
@@ -177,7 +175,9 @@
     width: 100%;
 
     .choosefile {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+      padding-top: 20px;
     }
 
     .preview {
@@ -189,11 +189,11 @@
         margin: 0;
         margin-right: 20px;
 
-        img {
-          max-width: 300px;
-          max-height: 300px;
-          object-fit: contain;
-        }
+        // img {
+        //   max-width: 300px;
+        //   max-height: 300px;
+        //   object-fit: contain;
+        // }
       }
     }
 
@@ -227,7 +227,20 @@
 }
 .username {
   margin-top: 20%;
+  color: #fff;
 }
 .Profilepage2 {
   padding-top: 3cm;
+}
+.removebutton {
+  margin-bottom: 20px;
+}
+.figure {
+  figure img {
+    width: 200%; /* set the width of the image to 300 pixels */
+    height: 30%; /* set the height to auto to maintain aspect ratio */
+  }
+  display: inline;
+  width: 5px;
+  height: 15px;
 }

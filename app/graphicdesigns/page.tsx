@@ -1,7 +1,7 @@
-import { getGraphicdesigns } from '@/database/graphicdesigns';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getGraphicdesigns } from '../../database/graphicdesigns';
 import styles from './page.module.scss';
 
 export const metadata = {

@@ -3,6 +3,9 @@
   .backgroundimage {
   }
 }
+.flex1 {
+  display: flex;
+}
 
 .backgroundimage {
   width: 350px;
@@ -12,7 +15,7 @@
   margin-bottom: 80px;
   padding-left: 5px;
   padding-right: 5px;
-  border-radius: 10%;
+  border-radius: 15px;
 }
 .text {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
@@ -87,7 +90,7 @@
   height: 300px;
   padding-left: 5%;
   padding-right: 5%;
-  border-radius: 100%;
+  border-radius: 15px;
 }
 .cont {
   align-items: center;
@@ -99,7 +102,7 @@
 .image3 {
   width: 500px;
   height: 700px;
-  border-radius: 10%;
+  border-radius: 15px;
 }
 .group {
   display: flex;
@@ -148,7 +151,7 @@
 }
 
 .blick {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   width: 600px;
@@ -156,6 +159,9 @@
   text-align: center;
 }
 @media (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+  }
   .main {
     padding: 0 16px;
   }
@@ -174,6 +180,10 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .blick div {
@@ -186,6 +196,9 @@
   }
 }
 @media only screen and (max-width: 1024px) {
+  .flex-container {
+    flex-direction: column;
+  }
   /* Your CSS styles for 1024px and below */
   /* For example, you can change the width and height of the images */
   .backgroundimage {
@@ -195,8 +208,14 @@
 }
 @media screen and (min-width: 1440px) {
   /* Add your styles for 1440px and above here */
+  .flex-container {
+    flex-direction: column;
+  }
 }
 @media (max-width: 425px) {
+  .flex-container {
+    flex-direction: column;
+  }
   .fis {
     font-size: 16px;
   }
@@ -228,4 +247,121 @@
 }
 .link {
   margin-top: 2cm;
+}
+.link:hover {
+  color: red;
+}
+
+.painting {
+  position: absolute;
+  top: 85%;
+  right: 60%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  color: #0f0e0e;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: inline-block; /* Um den Text innerhalb eines Rechtecks anzuzeigen */
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 1cm;
+  width: 5cm;
+  padding: 10px;
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.5);
+    color: #fff;
+  }
+  height: 1cm;
+  width: 7cm;
+}
+// .a
+// {
+//   position: relative;
+// display:inline-block;
+// padding: 15px 30px
+// color: #2196f3;
+// text-transform: uppercase;
+// letter-spacing: 4px;
+// text-decoration: none;
+// font-size: 24px;
+// overflow hidden;
+// transition: 0.2s;
+// }
+// a:hover{
+//     color: #255784;
+//     background: #2196f3;
+//     box-shadow:rgba(0, 0, 10px #, 0.10)
+// }
+
+.graphicdesign {
+  position: absolute;
+  top: 65%;
+  right: 2px;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  color: #0f0e0e;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: inline-block; /* Um den Text innerhalb eines Rechtecks anzuzeigen */
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 1cm;
+  width: 5cm;
+  padding: 10px;
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.5);
+    color: #fff;
+  }
+  height: 1cm;
+  width: 7cm;
+}
+
+.industrialdesign {
+  position: absolute;
+  top: 85%;
+  right: 25%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  color: #0f0e0e;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: inline-block; /* Um den Text innerhalb eines Rechtecks anzuzeigen */
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 1cm;
+  width: 5cm;
+  padding: 10px;
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.5);
+    color: #fff;
+  }
+  height: 1cm;
+  width: 7cm;
+}
+
+.jewelry {
+  position: absolute;
+  top: 85%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  color: #0f0e0e;
+  border-radius: 15px;
+  border: 1px solid black;
+  display: inline-block; /* Um den Text innerhalb eines Rechtecks anzuzeigen */
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 1cm;
+  width: 5cm;
+  padding: 10px;
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.5);
+    color: #fff;
+  }
+  height: 1cm;
+  width: 7cm;
 }

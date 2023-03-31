@@ -1,44 +1,18 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@upleveled/eslint-config-upleveled/tsconfig.base.json",
   "include": [
-    "next-env.d.ts",
+    "**/.eslintrc.cjs",
     "**/*.ts",
-    "**/*.js",
-    "**/*.mjs",
     "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.cjs",
+    "**/*.mjs",
     ".next/types/**/*.ts",
-    "app/head.js",
-    "app/layout.tsx",
-    "app/head.js",
-    "migrations/1677432150-createTableArts.mjs",
-    "migrations/1677432149-insertIntoTableCategory.mjs",
-    "migrations/1677430232-creatTableCategory.mjs",
-    "migrations/1677432151-createTableSessions.mjs",
-    "app/profile/[username]/login/page.tsx"
-, "database/ jewelryts"  ],
-  "exclude": ["node_modules"]
+    "next-env.d.ts"
+  ],
+  "compilerOptions": {
+    "jsx": "preserve"
+  }
 }

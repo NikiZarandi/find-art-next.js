@@ -1,7 +1,7 @@
-import { getPaintings } from '@/database/paintings';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getPaintings } from '../../database/paintings';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -30,13 +30,16 @@ export default async function PaintingsPage() {
                 />
               </div>
               <div>
+                <h2 className={styles.name}>{painting.description}</h2>
+              </div>
+              <div>
                 <div>
-                  <Link href={`/paintings/${painting.id}`}>
+                  <Link
+                    className={styles.description}
+                    href={`/paintings/${painting.id}`}
+                  >
                     {painting.name}
                   </Link>
-                </div>
-                <div>
-                  <h2 className={styles.description}>{painting.description}</h2>
                 </div>
               </div>
             </div>

@@ -1,4 +1,29 @@
-.choosefile {
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+.boxinfo {
   display: flex;
   display: contents;
+}
+.container {
+  display: contents;
+  display: flex;
+}
+.h1 {
+  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 12px;
+  padding-top: 10px;
+  display: flex;
+}
+.choosefile {
+  width: 20px;
+  height: 40;
+}
+.figure {
+  figure img {
+    width: 20%; /* set the width of the image to 300 pixels */
+    height: 30%; /* set the height to auto to maintain aspect ratio */
+  }
 }

@@ -1,10 +1,10 @@
 import crypto from 'node:crypto';
-import { createSerializedRegisterSessionTokenCookie } from '@/util/cookies';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createSession } from '../../../../database/sessions';
 import { getUserByUsernameWithPasswordHash } from '../../../../database/users';
+import { createSerializedRegisterSessionTokenCookie } from '../../../../util/cookies';
 
 const userSchema = z.object({
   username: z.string(),

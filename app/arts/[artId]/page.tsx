@@ -1,6 +1,6 @@
-import { getArtById } from '@/database/arts';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getArtById } from '../../../database/arts';
 
 export const dynamic = 'force-dynamic';
 

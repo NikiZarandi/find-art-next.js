@@ -1,7 +1,7 @@
-import { getIndustrialdesigns } from '@/database/industrialdesigns';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getIndustrialdesigns } from '../../database/industrialdesigns';
 import styles from './page.module.scss';
 
 // import styles from './page.module.scss';
@@ -32,18 +32,16 @@ export default async function IndustrialdesignPage() {
                 />
               </div>
               <div>
+                <h2 className={styles.name}>{industrialdesign.description}</h2>
+              </div>
+              <div>
                 <div>
                   <Link
-                    className={styles.name}
+                    className={styles.description}
                     href={`/industrialdesigns/${industrialdesign.id}`}
                   >
                     {industrialdesign.name}
                   </Link>
-                </div>
-                <div>
-                  <h2 className={styles.description}>
-                    {industrialdesign.description}
-                  </h2>
                 </div>
               </div>
             </div>

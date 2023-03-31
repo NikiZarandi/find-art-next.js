@@ -1,9 +1,9 @@
-import { Art, getArtsByUserId } from '@/database/arts';
 import { cookies } from 'next/headers';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import { Art, getArtsByUserId } from '../../../database/arts';
 import {
   getUserBySessionToken,
   getUserByUsername,
@@ -44,43 +44,44 @@ export default async function UserProfile({ params }: Props) {
   const arts = await getArtsByUserId(user.id);
 
   return (
-    <main className={styles.Profilepage}>
-      <h1 className={styles.username}>
-        <b>Hallo {user.username}</b>
-      </h1>
-      {/* <p>id: {user.id}</p> */}
-      <Link href={`/profile/${user.username}/userfavorites`}>
-        <b className={styles.myFavorites}>MY FAVORITES</b>
-      </Link>
-      {currentUser.id === user.id ? (
-        // <AddImage user={user} images={images} />
-        <AddArt userId={user.id} arts={arts} />
-      ) : (
-        ''
-      )}
-      <span className={styles.boxinfoseiz}>
-        {arts.map((art) => {
-          return (
-            <div key={`user-${art.userId}`}>
-              <div  className={styles.image}>
-                <Image
-
-                  src={`${art.imageUrl}`}
-                  alt="user generated image"
-                  width="250"
-                  height="360"
-                />
+    <main>
+      <div className={styles.Profilepage}>
+        <h1 className={styles.username}>
+          <b>Hallo {user.username}</b>
+        </h1>
+        {/* <p>id: {user.id}</p> */}
+        <Link href={`/profile/${user.username}/userfavorites`}>
+          <b className={styles.myFavorites}>MY FAVORITES</b>
+        </Link>
+        {currentUser.id === user.id ? (
+          // <AddImage user={user} images={images} />
+          <AddArt userId={user.id} arts={arts} />
+        ) : (
+          ''
+        )}
+        <span className={styles.image}>
+          {arts.map((art) => {
+            return (
+              <div key={`user-${art.userId}`}>
+                <div>
+                  <Image
+                    src={`${art.imageUrl}`}
+                    alt="user generated image"
+                    width="100"
+                    height="160"
+                  />
+                </div>
+                <div>
+                  <p>{art.description}</p>
+                </div>
+                <div className={styles.removebutton}>
+                  <RemoveArt art={art} />
+                </div>
               </div>
-              <div>
-                <p>{art.description}</p>
-              </div>
-              <div>
-                <RemoveArt art={art} />
-              </div>
-            </div>
-          );
-        })}
-      </span>
+            );
+          })}
+        </span>
+      </div>
     </main>
   );
 }

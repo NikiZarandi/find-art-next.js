@@ -19,8 +19,8 @@ export default function AddArt(props: Props) {
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<{ message: string }[]>([]);
   const router = useRouter();
-  const dropdown = document.getElementById('dropdown');
 
+  console.log('category number', typeof category);
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
     const files = changeEvent.target.files!;
 
@@ -49,7 +49,7 @@ export default function AddArt(props: Props) {
 
     const formData = new FormData();
 
-    for (const file of fileInput.files as FileList) {
+    for (const file of fileInput.files!) {
       formData.append('file', file);
     }
 
@@ -64,29 +64,24 @@ export default function AddArt(props: Props) {
     ).then((r) => r.json());
 
     setImageSrc(data.secure_url);
-    // console.log(data.secure_url);
+    // console.log('data.secure_url');
     setUploadData(data);
   }
 
   return (
     <main>
       <div>
-        <div>
+        <div className={styles.container}>
           <h1 className={styles.h1}>SHARE YOUR ARTS & DESIGNS!</h1>
           {/* <p>{error}</p> */}
           <div className={styles.choosefile}>
             <form method="post" onSubmit={handleOnSubmit}>
-              <label>
+              <label className={styles.figure}>
                 Upload your image here:
-                <input
-                  className={styles.h2}
-                  onChange={handleOnChange}
-                  type="file"
-                  name="file"
-                />
+                <input onChange={handleOnChange} type="file" name="file" />
               </label>
               <p>Preview</p>
-              <figure>
+              <figure className={styles.figure}>
                 <img src={imageSrc} alt="User" />
               </figure>
               <div>
@@ -147,8 +142,9 @@ export default function AddArt(props: Props) {
               <button
                 className={styles.boxinfo}
                 onClick={async (event) => {
+                  // console.log('hallo');
                   // const userId = props.userId;
-                  const imageUrl = imageSrc;
+                  // const imageUrl = imageSrc;
                   event.preventDefault();
                   const response = await fetch('/api/arts', {
                     method: 'POST',
@@ -160,7 +156,7 @@ export default function AddArt(props: Props) {
                       imageUrl: imageSrc,
                       description: description,
                       userId: props.userId,
-                      categoriesId: category,
+                      categoriesId: Number,
                     }),
                   });
                   const data = await response.json();

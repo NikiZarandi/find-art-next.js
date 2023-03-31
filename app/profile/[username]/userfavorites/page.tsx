@@ -1,7 +1,7 @@
-import { getFavoriteByIdWithImageInfo } from '@/database/favorites';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { getFavoriteByIdWithImageInfo } from '../../../../database/favorites';
 import { getUserByUsername } from '../../../../database/users';
 import RemoveFavorite from './RemoveFavorites';
 

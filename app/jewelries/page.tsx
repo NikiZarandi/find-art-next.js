@@ -1,7 +1,7 @@
-import { getJewelries } from '@/database/ jewelries';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { getJewelries } from '../../database/ jewelries';
 import styles from './page.module.scss';
 
 export const metadata = {
@@ -31,16 +31,16 @@ export default async function JewelriesPage() {
                 />
               </div>
               <div>
+                <h2 className={styles.name}>{jewelry.description}</h2>
+              </div>
+              <div>
                 <div>
                   <Link
-                    className={styles.name}
+                    className={styles.description}
                     href={`/jewelries/${jewelry.id}`}
                   >
                     {jewelry.name}
                   </Link>
-                </div>
-                <div>
-                  <h2 className={styles.description}>{jewelry.description}</h2>
                 </div>
               </div>
             </div>

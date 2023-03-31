@@ -32,78 +32,80 @@ export default function HomePage() {
           Register now
         </a> */}
       </div>
-      <div className={styles.blick}>
-        <div>
+      <div className={styles.flex1}>
+        <div className={styles.blick}>
           <div>
-            <Link href={`/paintings`}>
+            <div>
+              <Link href={`/paintings`}>
+                <Image
+                  className={styles.backgroundimage}
+                  src="/images/firstpage/painting.jpg"
+                  alt="painting"
+                  width="200"
+                  height="300"
+                />
+                <div className={styles.painting}>PAINTING</div>
+              </Link>
+              <div>
+                {/* <button type="button" className={styles.button}>
+                PAINTING
+              </button> */}
+              </div>
+            </div>
+          </div>
+          <div>
+            <Link href={`/graphicdesigns`}>
               <Image
                 className={styles.backgroundimage}
-                src="/images/firstpage/painting.jpg"
-                alt="painting"
+                src="/images/firstpage/angosht.jpg"
+                alt="angosht"
                 width="200"
                 height="300"
               />
-              PAINTING
+              <div className={styles.graphicdesign}>hrefGraphic Design</div>
             </Link>
-            <div>
-              {/* <button type="button" className={styles.button}>
-                PAINTING
-              </button> */}
-            </div>
-          </div>
-        </div>
-        <div>
-          <Link href={`/graphicdesigns`}>
-            <Image
-              className={styles.backgroundimage}
-              src="/images/firstpage/angosht.jpg"
-              alt="angosht"
-              width="200"
-              height="300"
-            />
-            Graphic Design
-          </Link>
-          {/* <div>
+            {/* <div>
             <button type="button" className={styles.button}>
               GRAPHIC DESIGN
             </button>
           </div> */}
-        </div>
-        <div>
-          <Link href={`/industrialdesigns`}>
-            <Image
-              className={styles.backgroundimage}
-              src="/images/firstpage/chair.jpg"
-              alt="chair"
-              width="200"
-              height="300"
-            />
-            Industrial Design
-          </Link>
+          </div>
+          <div>
+            <Link href={`/industrialdesigns`}>
+              <Image
+                className={styles.backgroundimage}
+                src="/images/firstpage/chair.jpg"
+                alt="chair"
+                width="200"
+                height="300"
+              />
+              <div className={styles.industrialdesign}>Industrial Design</div>
+            </Link>
 
-          {/* <div>
+            {/* <div>
             <button type="button" className={styles.button}>
               INDUSTRIAL DESIGN
             </button>
           </div> */}
-        </div>
+          </div>
 
-        <div>
-          <Link href={`/jewelries`}>
-            <Image
-              className={styles.backgroundimage}
-              src="/images/firstpage/jewlery.jpg"
-              alt="jewlery"
-              width="200"
-              height="300"
-            />
-            Jewelry
-          </Link>
-          {/* <div>
+          <div>
+            <Link href={`/jewelries`}>
+              <Image
+                className={styles.backgroundimage}
+                src="/images/firstpage/jewlery.jpg"
+                alt="jewlery"
+                width="200"
+                height="300"
+              />
+              <div className={styles.jewelry}>Jewelry</div>
+            </Link>
+            {/* <div>
             <button type="button" className={styles.button}>
               JEWELLERY
             </button>
           </div> */}
+          </div>
         </div>
       </div>
 
