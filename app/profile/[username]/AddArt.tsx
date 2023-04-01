@@ -82,7 +82,7 @@ export default function AddArt(props: Props) {
               </label>
               <p>Preview</p>
               <figure className={styles.figure}>
-                <img src={imageSrc} alt="User" />
+                <img src={imageSrc} alt="User" width="200px" />
               </figure>
               <div>
                 <button className={styles.uploud}>Upload</button>

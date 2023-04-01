@@ -32,92 +32,98 @@ export default function HomePage() {
           Register now
         </a> */}
       </div>
-      <div className={styles.flex1}>
-        <div className={styles.blick}>
+      {/* <div className={styles.flex1}> */}
+      <div className={styles.blick}>
+        <div>
           <div>
-            <div>
-              <Link href={`/paintings`}>
-                <Image
-                  className={styles.backgroundimage}
-                  src="/images/firstpage/painting.jpg"
-                  alt="painting"
-                  width="200"
-                  height="300"
-                />
-                <div className={styles.painting}>PAINTING</div>
-              </Link>
-              <div>
-                {/* <button type="button" className={styles.button}>
-                PAINTING
-              </button> */}
-              </div>
-            </div>
-          </div>
-          <div>
-            <Link href={`/graphicdesigns`}>
+            <Link href={`/paintings`}>
               <Image
                 className={styles.backgroundimage}
-                src="/images/firstpage/angosht.jpg"
-                alt="angosht"
+                src="/images/firstpage/painting.jpg"
+                alt="painting"
                 width="200"
                 height="300"
               />
-              <div className={styles.graphicdesign}>hrefGraphic Design</div>
+              <div className={styles.painting}>PAINTING</div>
             </Link>
-            {/* <div>
+            <div>
+              {/* <button type="button" className={styles.button}>
+                PAINTING
+              </button> */}
+            </div>
+          </div>
+        </div>
+        <div>
+          <Link href={`/graphicdesigns`}>
+            <Image
+              className={styles.backgroundimage}
+              src="/images/firstpage/angosht.jpg"
+              alt="angosht"
+              width="200"
+              height="300"
+            />
+            <div className={styles.graphicdesign}>Graphic Design</div>
+          </Link>
+          {/* <div>
             <button type="button" className={styles.button}>
               GRAPHIC DESIGN
             </button>
           </div> */}
-          </div>
-          <div>
-            <Link href={`/industrialdesigns`}>
-              <Image
-                className={styles.backgroundimage}
-                src="/images/firstpage/chair.jpg"
-                alt="chair"
-                width="200"
-                height="300"
-              />
-              <div className={styles.industrialdesign}>Industrial Design</div>
-            </Link>
+        </div>
+        <div>
+          <Link href={`/industrialdesigns`}>
+            <Image
+              className={styles.backgroundimage}
+              src="/images/firstpage/chair.jpg"
+              alt="chair"
+              width="200"
+              height="300"
+            />
+            <div className={styles.industrialdesign}>Industrial Design</div>
+          </Link>
 
-            {/* <div>
+          {/* <div>
             <button type="button" className={styles.button}>
               INDUSTRIAL DESIGN
             </button>
           </div> */}
-          </div>
+        </div>
 
-          <div>
-            <Link href={`/jewelries`}>
-              <Image
-                className={styles.backgroundimage}
-                src="/images/firstpage/jewlery.jpg"
-                alt="jewlery"
-                width="200"
-                height="300"
-              />
-              <div className={styles.jewelry}>Jewelry</div>
-            </Link>
-            {/* <div>
+        <div>
+          <Link href={`/jewelries`}>
+            <Image
+              className={styles.backgroundimage}
+              src="/images/firstpage/jewlery.jpg"
+              alt="jewlery"
+              width="200"
+              height="300"
+            />
+            <div className={styles.jewelry}>Jewelry</div>
+          </Link>
+          {/* <div>
             <button type="button" className={styles.button}>
               JEWELLERY
             </button>
           </div> */}
-          </div>
         </div>
       </div>
-
-      <p className={styles.p}> lalalala </p>
+      {/* </div> */}
       <div className={styles.divElementOne}>
-        We live by the motto: “Our customers are the focus”. Your wishes and
-        concerns are important to us. We want to inspire you with our design
-        ideas. We live by the motto: “Our customers are the focus”. Your wishes
-        and concerns are important to us. We want to inspire you with our design
-        ideas.We live by the motto: “Our customers are the focus”. Your wishes
-        and concerns are important to us. We want to inspire you with our design
-        ideas.
+        {/* <p className={p}> lalalala </p> */}
+        <div className={styles.divElementOne}>
+          findart is a platform for creators and people interested in the field
+          of visual arts and artworks. This includes paintings, graphic design,
+          industrial design and jewellery. The goal is to support unique and
+          outstanding young artists as early as possible and to strengthen their
+          autonomy so that they can build up their existence as independently as
+          possible from galleries. How it works for artists - the profile is
+          filled out and at least one piece of art must be uploaded and
+          described in the portfolio. The photos of the artworks must be of high
+          quality. The quality of the uploaded artworks is constantly being
+          examined in order to maintain the quality standard. How it works for
+          visitors interested in art – just visit findart and enjoy or create a
+          login and interact with our artists.
+        </div>
       </div>
       <br />
       <br />
@@ -128,23 +134,13 @@ export default function HomePage() {
       <br />
       <div className={styles.divElementzeri}>
         <div>
-          <div className={styles.divElementzeri}>
-            gallery painting ideas illustration connection inspiration graphic
-            art in context
-          </div>
-        </div>
-
-        <div>
           <Image
-            className={styles.image3}
+            className={styles.divElementOne}
             src="/images/firstpage/badbadak.jpeg"
             alt="galery"
             width="600"
             height="700"
           />
-        </div>
-        <div className={styles.texti}>
-          mak gallery london art gallery exhibitions museum of modern Art
         </div>
       </div>
     </main>

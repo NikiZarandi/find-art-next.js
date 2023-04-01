@@ -1,6 +1,6 @@
-import { getIndustrialdesignById } from '@/database/industrialdesigns';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getIndustrialdesignById } from '../../../database/industrialdesigns';
 
 export const dynamic = 'force-dynamic';
 

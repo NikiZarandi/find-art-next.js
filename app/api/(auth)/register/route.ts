@@ -1,11 +1,11 @@
 import crypto from 'node:crypto';
-import { createCsrfSecret } from '@/util/carf';
-import { createSerializedRegisterSessionTokenCookie } from '@/util/cookies';
 import bcrypt from 'bcrypt';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createSession } from '../../../../database/sessions';
 import { createUser, getUserByUsername } from '../../../../database/users';
+import { createCsrfSecret } from '../../../../util/carf';
+import { createSerializedRegisterSessionTokenCookie } from '../../../../util/cookies';
 
 const userSchema = z.object({
   username: z.string(),

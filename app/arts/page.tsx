@@ -21,7 +21,6 @@ export default async function ArtsPage() {
           return (
             <div key={`arts-${art.id}`}>
               <div>
-                {/* <h2>{art.categoriesId}</h2> */}
                 <Image
                   className={styles.image}
                   src={art.imageUrl}

@@ -1,6 +1,6 @@
-import { getPaintingById } from '@/database/paintings';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getPaintingById } from '../../../database/paintings';
 
 export const dynamic = 'force-dynamic';
 

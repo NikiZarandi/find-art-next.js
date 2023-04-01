@@ -202,10 +202,10 @@
       padding: 10px;
       border: none;
       border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px rgba(39, 38, 38, 0.2);
       font-size: 1.2rem;
       width: 100%;
-      max-width: 300px;
+      max-width: 250px;
     }
 
     .uploud {
@@ -237,8 +237,8 @@
 }
 .figure {
   figure img {
-    width: 200%; /* set the width of the image to 300 pixels */
-    height: 30%; /* set the height to auto to maintain aspect ratio */
+    width: 200px; /* set the width of the image to 300 pixels */
+    height: auto; /* set the height to auto to maintain aspect ratio */
   }
   display: inline;
   width: 5px;

@@ -4,6 +4,7 @@
     margin: 10px 0;
     padding: 50px;
     display: flex;
+    color: #171111;
 
     & a + a,
     span + a {
@@ -72,12 +73,11 @@
   align-items: center;
 }
 .logo {
-  size: 30cm;
+  size: 30px;
 }
 .textii {
-  hyphens: auto;
   text-align: center;
-  display: c;
+
   align-items: center;
   color: #f2f9ff;
 }
@@ -90,7 +90,4 @@
 }
 .facebookIcon {
   height: 1.2cm;
-}
-.nav {
-  color: #171111;
 }

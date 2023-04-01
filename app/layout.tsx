@@ -35,7 +35,7 @@ export default async function RootLayout(props: Props) {
   // if user is not undefined, the person is logged in
   // if user is undefined, the person is logged out
 
-  const randomNumber = Math.floor(Math.random() * 10);
+  // const randomNumber = Math.floor(Math.random() * 10);
 
   return (
     <html lang="en">
@@ -49,7 +49,7 @@ export default async function RootLayout(props: Props) {
             alt="logo "
           />
 
-          <nav className={styles.nav}>
+          <nav>
             <div>
               <a href="/">Home</a>
               <a href="/arts">Arts</a>
