@@ -20,7 +20,7 @@ export default async function JewelriesPage() {
           // console.log(jewelries);
           return (
             <div key={`jewelries-${jewelry.id}`}>
-              <div>
+              <div className={styles.abstand}>
                 {/* <h2>{jewelry.categoriesId}</h2> */}
                 <Image
                   className={styles.image}

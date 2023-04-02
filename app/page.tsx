@@ -23,14 +23,6 @@ export default function HomePage() {
         <div className={styles.fis}>
           Arts & designs community through young artists & designers
         </div>
-
-        {/* <div className={styles.butt}>
-          <button type="button">Login</button>
-        </div> */}
-        {/* <a  href="/register">
-          {' '}
-          Register now
-        </a> */}
       </div>
       {/* <div className={styles.flex1}> */}
       <div className={styles.blick}>
@@ -46,11 +38,6 @@ export default function HomePage() {
               />
               <div className={styles.painting}>PAINTING</div>
             </Link>
-            <div>
-              {/* <button type="button" className={styles.button}>
-                PAINTING
-              </button> */}
-            </div>
           </div>
         </div>
         <div>
@@ -64,11 +51,6 @@ export default function HomePage() {
             />
             <div className={styles.graphicdesign}>Graphic Design</div>
           </Link>
-          {/* <div>
-            <button type="button" className={styles.button}>
-              GRAPHIC DESIGN
-            </button>
-          </div> */}
         </div>
         <div>
           <Link href={`/industrialdesigns`}>
@@ -81,12 +63,6 @@ export default function HomePage() {
             />
             <div className={styles.industrialdesign}>Industrial Design</div>
           </Link>
-
-          {/* <div>
-            <button type="button" className={styles.button}>
-              INDUSTRIAL DESIGN
-            </button>
-          </div> */}
         </div>
 
         <div>
@@ -100,17 +76,12 @@ export default function HomePage() {
             />
             <div className={styles.jewelry}>Jewelry</div>
           </Link>
-          {/* <div>
-            <button type="button" className={styles.button}>
-              JEWELLERY
-            </button>
-          </div> */}
         </div>
       </div>
       {/* </div> */}
+      {/* <p className={styles.texttitle}> ... </p> */}
       <div className={styles.divElementOne}>
-        {/* <p className={p}> lalalala </p> */}
-        <div className={styles.divElementOne}>
+        <div>
           findart is a platform for creators and people interested in the field
           of visual arts and artworks. This includes paintings, graphic design,
           industrial design and jewellery. The goal is to support unique and
@@ -125,24 +96,21 @@ export default function HomePage() {
           login and interact with our artists.
         </div>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
       <div className={styles.divElementzeri}>
         <div>
           <Image
             className={styles.divElementOne}
-            src="/images/firstpage/badbadak.jpeg"
+            src="/images/firstpage/dast.jpeg"
             alt="galery"
             width="600"
             height="700"
           />
         </div>
       </div>
+      {/* <div className={styles.connectUs}>
+        For mor Information you can contact us hier!
+      </div> */}
     </main>
   );
 }

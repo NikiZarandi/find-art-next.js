@@ -20,7 +20,7 @@ export default async function GraphicdesignsPage() {
           // console.log(graphicdesigns);
           return (
             <div key={`graphicdesigns-${graphicdesign.id}`}>
-              <div>
+              <div className={styles.abstand}>
                 <Image
                   className={styles.image}
                   src={graphicdesign.imageUrl}

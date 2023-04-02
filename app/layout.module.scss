@@ -1,7 +1,7 @@
 .header {
   nav {
     border-radius: 6px;
-    margin: 10px 0;
+    margin: 20px 0;
     padding: 50px;
     display: flex;
     color: #171111;
@@ -13,12 +13,15 @@
     a {
       text-decoration: none;
       color: #121314;
+      &:hover {
+        color: #df38d1;
+      }
     }
 
     & div {
       margin-right: auto;
       display: flex;
-      gap: 30px;
+      gap: 40px;
     }
   }
 }
@@ -28,12 +31,6 @@
   /* other styles */
 }
 /* Media query for iPhone screens */
-@media screen and (max-width: 375px) {
-  .navbar {
-    width: 100%; /* or a smaller width that fits better on a smaller screen */
-    /* other styles */
-  }
-}
 
 .header {
   display: flex;
@@ -45,10 +42,10 @@
   align-items: center;
   flex-direction: column;
   display: flex;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 120px;
   color: #fff;
-  margin-top: 25%;
+  margin-top: 10%;
   font-size: 16px;
   background-color: #1f232a;
 

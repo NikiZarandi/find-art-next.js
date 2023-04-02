@@ -22,7 +22,7 @@ export default async function IndustrialdesignPage() {
           // console.log(industrialdesigns);
           return (
             <div key={`industrialdesigns-${industrialdesign.id}`}>
-              <div>
+              <div className={styles.abstand}>
                 <Image
                   className={styles.image}
                   src={industrialdesign.imageUrl}

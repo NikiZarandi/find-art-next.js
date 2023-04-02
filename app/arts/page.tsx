@@ -20,7 +20,7 @@ export default async function ArtsPage() {
           console.log(arts);
           return (
             <div key={`arts-${art.id}`}>
-              <div>
+              <div className={styles.abstand}>
                 <Image
                   className={styles.image}
                   src={art.imageUrl}
@@ -32,11 +32,9 @@ export default async function ArtsPage() {
               <div>
                 <h2 className={styles.name}>{art.description}</h2>
               </div>
-              <div>
+              <div className={styles.description}>
                 <div>
-                  <Link className={styles.description} href={`/arts/${art.id}`}>
-                    {art.name}
-                  </Link>
+                  <Link href={`/arts/${art.id}`}>{art.name}</Link>
                 </div>
               </div>
             </div>
