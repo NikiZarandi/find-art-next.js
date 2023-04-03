@@ -34,12 +34,9 @@ export default async function IndustrialdesignPage() {
               <div>
                 <h2 className={styles.name}>{industrialdesign.description}</h2>
               </div>
-              <div>
+              <div className={styles.description}>
                 <div>
-                  <Link
-                    className={styles.description}
-                    href={`/industrialdesigns/${industrialdesign.id}`}
-                  >
+                  <Link href={`/industrialdesigns/${industrialdesign.id}`}>
                     {industrialdesign.name}
                   </Link>
                 </div>

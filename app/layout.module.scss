@@ -1,14 +1,14 @@
 .header {
   nav {
     border-radius: 6px;
-    margin: 20px 0;
+    margin: 20px;
     padding: 50px;
     display: flex;
     color: #171111;
 
     & a + a,
     span + a {
-      margin-left: 30px;
+      margin-left: 20px;
     }
     a {
       text-decoration: none;
@@ -21,7 +21,7 @@
     & div {
       margin-right: auto;
       display: flex;
-      gap: 40px;
+      gap: 20px;
     }
   }
 }

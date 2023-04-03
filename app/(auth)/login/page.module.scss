@@ -5,36 +5,35 @@
   align-items: center;
   text-decoration: solid;
   padding: 90px;
-
-  // background-image: url('/images/logo/background.jpeg');
-  // padding-left: 0%;
-  // background-size: cover;
-  // background-position: center center;
-  border-radius: 10%;
 }
 .color {
-  margin-bottom: 10%;
-  color: rgb(19, 16, 16);
   width: 400px;
   height: 40px;
+  border-radius: 40px;
+  font-size: 16px;
+  padding-left: 10%;
 }
 
 .password {
-  padding-bottom: 15%;
+  padding-bottom: 10%;
   margin-bottom: 10%;
   color: rgb(255, 255, 255);
   width: 400px;
   height: 40px;
   font-size: 110%;
+  border-radius: 110px;
 }
 .input {
   color: rgb(34, 31, 31);
   font-size: 16px;
+  border-radius: 45px;
+  margin-left: 10%;
 }
-.text {
-  height: 30px;
-  width: 200px;
-}
+// .text {
+//   height: 30px;
+//   width: 200px;
+
+// }
 
 .button {
   background-color: rgb(255, 255, 255);
@@ -46,9 +45,11 @@
   text-decoration: none;
   border: 1px solid rgb(146, 148, 248);
   position: relative;
+  border-radius: 40px;
   overflow: hidden;
   margin-top: 10%;
   width: 400px;
+  margin-bottom: 0%;
 }
 .button:hover {
   box-shadow: 1px 1px 25px 10px rgba(146, 148, 248, 0.4);
@@ -62,15 +63,13 @@
   color: rgb(255, 255, 255);
   font-size: 130%;
 }
-// .register {
-//   justify-content: center;
-//   align-items: center;
-// }
+
 .h3 {
   margin-top: 10%;
   margin-bottom: 10%;
   color: rgb(255, 255, 255);
-  font-size: 130%;
+  font-size: 28px;
+  font-size: 28px;
 }
 .input {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -99,4 +98,38 @@
   100% {
     background-position: 0% 50%;
   }
+}
+.texth1 {
+  font-family: Arial, Helvetica, sans-serif;
+
+  align-items: center;
+  text-decoration: solid;
+  margin-top: 8%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: small;
+  color: ghostwhite;
+}
+.texth2 {
+  font-size: small;
+  align-items: center;
+  text-decoration: solid;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: small;
+  color: ghostwhite;
+}
+.forgetPassword {
+  align-items: center;
+  text-decoration: solid;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: small;
+  color: ghostwhite;
+  border: 1px solid black;
 }

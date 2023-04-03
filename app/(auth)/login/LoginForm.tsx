@@ -48,6 +48,7 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
           <div className={styles.findart}>
             <h1>FIND ART</h1>
           </div>
+
           <h3 className={styles.h3}>Login</h3>
           <label className={styles.password}>
             username
@@ -57,16 +58,36 @@ export default function LoginForm(props: { returnTo?: string | string[] }) {
               onChange={(event) => setUsername(event.currentTarget.value)}
             />
           </label>
+
           <label className={styles.password}>
-            password
+            password{' '}
             <input
               className={styles.color}
-              value={password}
+              type="password"
+              id="password"
+              name="password"
               onChange={(event) => setPassword(event.currentTarget.value)}
             />
           </label>
+          <div>
+            <h1 className={styles.texth1}>did you forget your password?</h1>
+          </div>
+          <div>
+            {' '}
+            <div>
+              <h1 className={styles.texth2}>
+                click here and reset your password.
+              </h1>
+            </div>
+          </div>
+
           <div className={styles.login}>
             <button className={styles.button}>Login</button>
+          </div>
+          <div>
+            <h1 className={styles.texth1}>
+              you don't have an account with us? register now!
+            </h1>
           </div>
         </div>
       </div>

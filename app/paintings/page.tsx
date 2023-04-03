@@ -20,7 +20,7 @@ export default async function PaintingsPage() {
           // console.log(paintings);
           return (
             <div key={`paintings-${painting.id}`}>
-              <div>
+              <div className={styles.abstand}>
                 <Image
                   className={styles.image}
                   src={painting.imageUrl}

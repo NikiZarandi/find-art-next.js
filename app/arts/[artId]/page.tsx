@@ -27,8 +27,14 @@ export default async function ArtPage(props: Props) {
     <main className={styles.container}>
       <div className={styles.main}>
         {/* This is a {singleProduct.type} */}
-        <h1>name :{singleArt.name}</h1>
-        <h1>description: {singleArt.description}</h1>
+        <div className={styles.border}>
+          <h1 className={styles.descriptionText}>{singleArt.description}</h1>
+          <h1 className={styles.artistName}>Artist name: {singleArt.name}</h1>
+
+          <h1 className={styles.emailText}>
+            email adress: Niyan.Torlos@gmail.com
+          </h1>
+        </div>
         <br />
         <Image
           className={styles.image}

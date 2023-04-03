@@ -14,13 +14,13 @@ export default function AddArt(props: Props) {
   const [arts, setArts] = useState<Art[]>(props.arts);
   const [description, setDescription] = useState<string>('');
   const [name, setName] = useState<string>('');
-  const [category, setCategory] = useState<number>();
+  const [category, setCategory] = useState<number>(1);
   const [imageSrc, setImageSrc] = useState<string>('');
   const [uploadData, setUploadData] = useState<Blob>();
   const [error, setError] = useState<{ message: string }[]>([]);
   const router = useRouter();
 
-  console.log('category number', typeof category);
+  // console.log('category number', typeof category);
   function handleOnChange(changeEvent: React.ChangeEvent<HTMLInputElement>) {
     const files = changeEvent.target.files!;
 
@@ -75,48 +75,35 @@ export default function AddArt(props: Props) {
           <h1 className={styles.h1}>SHARE YOUR ARTS & DESIGNS!</h1>
           {/* <p>{error}</p> */}
           <div className={styles.choosefile}>
-            <form method="post" onSubmit={handleOnSubmit}>
-              <label className={styles.figure}>
-                Upload your image here:
-                <input onChange={handleOnChange} type="file" name="file" />
-              </label>
-              <p>Preview</p>
-              <figure className={styles.figure}>
-                <img src={imageSrc} alt="User" width="200px" />
-              </figure>
-              <div>
-                <button className={styles.uploud}>Upload</button>
-              </div>
-            </form>
+            <div>
+              <form method="post" onSubmit={handleOnSubmit}>
+                <label>
+                  <input onChange={handleOnChange} type="file" name="file" />
+                </label>
 
-            <label className={styles.boxinfo} htmlFor="caption">
-              description
-            </label>
+                <p>Preview</p>
+                <figure className={styles.figure}>
+                  <img src={imageSrc} alt="User" width="200px" />
+                </figure>
+                <div>
+                  <button className={styles.button}>Upload</button>
+                </div>
+              </form>
+            </div>
 
-            <br />
             <input
-              className={styles.boxinfo}
-              value={description}
-              onChange={(event) => setDescription(event.currentTarget.value)}
-            />
-
-            <br />
-            <label className={styles.boxinfo} htmlFor="caption">
-              name
-            </label>
-
-            <br />
-            <input
-              className={styles.boxinfo}
+              className={styles.button}
               value={name}
               onChange={(event) => setName(event.currentTarget.value)}
             />
+            <label htmlFor="caption">name</label>
 
-            <br />
-            <label className={styles.boxinfo} htmlFor="caption">
-              category
-            </label>
-            <br />
+            <input
+              className={styles.button}
+              value={description}
+              onChange={(event) => setDescription(event.currentTarget.value)}
+            />
+            <label htmlFor="caption">description</label>
 
             {/* <input
               className={styles.boxinfo}
@@ -125,7 +112,7 @@ export default function AddArt(props: Props) {
             /> */}
 
             <select
-              className={styles.boxinfo}
+              className={styles.button}
               id="dropdown"
               value={category}
               onChange={(event) =>
@@ -140,7 +127,7 @@ export default function AddArt(props: Props) {
             </select>
             <div>
               <button
-                className={styles.boxinfo}
+                className={styles.button}
                 onClick={async (event) => {
                   // console.log('hallo');
                   // const userId = props.userId;
@@ -156,7 +143,7 @@ export default function AddArt(props: Props) {
                       imageUrl: imageSrc,
                       description: description,
                       userId: props.userId,
-                      categoriesId: Number,
+                      categoriesId: category,
                     }),
                   });
                   const data = await response.json();
@@ -173,6 +160,13 @@ export default function AddArt(props: Props) {
               >
                 create
               </button>
+
+              <div className={styles.login}>
+                <label htmlFor="caption">email</label>
+                <button className={styles.button}>
+                  Niki.zarandi@gmail.com
+                </button>
+              </div>
             </div>
             {typeof error === 'string' && (
               <div style={{ color: 'red' }}>{error}</div>

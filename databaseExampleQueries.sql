@@ -244,3 +244,18 @@ export default function AddPainting(props: Props) {
     height: auto;
   }
 }
+
+
+  -- <label className={styles.password} htmlFor="password">
+  --           Passwort:
+  --           <input />
+  --           password
+  --           <input
+  --             type="password"
+  --             id="password"
+  --             name="password"
+  --             className={styles.color}
+  --             value={password}
+  --             onChange={(event) => setPassword(event.currentTarget.value)}
+  --           />
+  --         </label>

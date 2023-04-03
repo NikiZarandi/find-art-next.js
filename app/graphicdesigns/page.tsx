@@ -30,18 +30,13 @@ export default async function GraphicdesignsPage() {
                 />
               </div>
               <div>
-                <div>
-                  <Link
-                    className={styles.name}
-                    href={`/graphicdesigns/${graphicdesign.id}`}
-                  >
+                <h2 className={styles.name}>{graphicdesign.description}</h2>
+              </div>
+              <div>
+                <div className={styles.description}>
+                  <Link href={`/graphicdesigns/${graphicdesign.id}`}>
                     {graphicdesign.name}
                   </Link>
-                </div>
-                <div>
-                  <h2 className={styles.description}>
-                    {graphicdesign.description}
-                  </h2>
                 </div>
               </div>
             </div>

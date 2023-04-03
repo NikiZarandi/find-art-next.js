@@ -46,9 +46,12 @@ export default async function UserProfile({ params }: Props) {
   return (
     <main>
       <div className={styles.Profilepage}>
-        <h1 className={styles.username}>
-          <b>Hallo {user.username}</b>
-        </h1>
+        <div className={styles.name}>
+          <h1>
+            <b>Hallo {user.username}</b>
+          </h1>
+        </div>
+
         {/* <p>id: {user.id}</p> */}
         <Link href={`/profile/${user.username}/userfavorites`}>
           <b className={styles.myFavorites}>MY FAVORITES</b>
@@ -59,6 +62,7 @@ export default async function UserProfile({ params }: Props) {
         ) : (
           ''
         )}
+
         <span className={styles.image}>
           {arts.map((art) => {
             return (
